@@ -62,9 +62,9 @@
     "url": "https://oficinaempresas.bankia.es",
     "icon": "https://favicons.githubusercontent.com/oficinaempresas.bankia.es",
     "slug": "bankia-online-empresas",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
@@ -73,7 +73,9 @@
     "timeWeek": 723,
     "timeMonth": 728,
     "timeYear": 771,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2021-05-23": 0
+    }
   },
   {
     "name": "Test for HEAD",
@@ -99,18 +101,18 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "65.93%",
+    "uptime": "65.79%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
-    "uptimeYear": "65.93%",
+    "uptimeYear": "65.79%",
     "time": 0,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2021-05-23": 76,
+      "2021-05-23": 893,
       "2021-05-22": 1440,
       "2021-05-21": 1440,
       "2021-05-20": 1440,
