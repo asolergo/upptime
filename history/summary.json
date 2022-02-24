@@ -11,8 +11,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 97,
-    "timeDay": 63,
-    "timeWeek": 69,
+    "timeDay": 59,
+    "timeWeek": 64,
     "timeMonth": 74,
     "timeYear": 98,
     "dailyMinutesDown": {
@@ -31,10 +31,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 208,
-    "timeDay": 179,
-    "timeWeek": 243,
-    "timeMonth": 210,
-    "timeYear": 212,
+    "timeDay": 175,
+    "timeWeek": 237,
+    "timeMonth": 208,
+    "timeYear": 213,
     "dailyMinutesDown": {
       "2021-07-16": 20
     }
@@ -51,9 +51,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.95%",
     "time": 361,
-    "timeDay": 393,
-    "timeWeek": 338,
-    "timeMonth": 339,
+    "timeDay": 389,
+    "timeWeek": 357,
+    "timeMonth": 340,
     "timeYear": 359,
     "dailyMinutesDown": {
       "2021-09-15": 22,
@@ -73,11 +73,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.74%",
-    "time": 984,
-    "timeDay": 1373,
-    "timeWeek": 2179,
-    "timeMonth": 1692,
-    "timeYear": 993,
+    "time": 985,
+    "timeDay": 1073,
+    "timeWeek": 1337,
+    "timeMonth": 1681,
+    "timeYear": 995,
     "dailyMinutesDown": {
       "2021-11-14": 75,
       "2021-11-13": 17,
@@ -142,8 +142,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 32,
-    "timeDay": 12,
-    "timeWeek": 29,
+    "timeDay": 11,
+    "timeWeek": 28,
     "timeMonth": 16,
     "timeYear": 33,
     "dailyMinutesDown": {}
@@ -154,7 +154,7 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "33.52%",
+    "uptime": "33.46%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -165,7 +165,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-02-23": 76,
+      "2022-02-24": 75,
+      "2022-02-23": 1440,
       "2022-02-22": 1440,
       "2022-02-21": 1440,
       "2022-02-20": 1440,
@@ -528,8 +529,7 @@
       "2021-02-28": 1440,
       "2021-02-27": 1440,
       "2021-02-26": 1440,
-      "2021-02-25": 1440,
-      "2021-02-24": 1440
+      "2021-02-25": 1440
     }
   }
 ]
