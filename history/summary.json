@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 97,
-    "timeDay": 57,
+    "timeDay": 82,
     "timeWeek": 86,
-    "timeMonth": 99,
+    "timeMonth": 100,
     "timeYear": 99,
     "dailyMinutesDown": {
       "2021-09-25": 22
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 207,
-    "timeDay": 209,
-    "timeWeek": 192,
-    "timeMonth": 190,
+    "timeDay": 77,
+    "timeWeek": 102,
+    "timeMonth": 186,
     "timeYear": 219,
     "dailyMinutesDown": {
       "2021-07-16": 20
@@ -51,10 +51,10 @@
     "uptimeMonth": "99.96%",
     "uptimeYear": "99.99%",
     "time": 355,
-    "timeDay": 341,
-    "timeWeek": 176,
-    "timeMonth": 279,
-    "timeYear": 348,
+    "timeDay": 236,
+    "timeWeek": 197,
+    "timeMonth": 274,
+    "timeYear": 347,
     "dailyMinutesDown": {
       "2022-02-24": 18,
       "2021-09-15": 22,
@@ -67,18 +67,19 @@
     "icon": "https://favicons.githubusercontent.com/oficinaempresas.bankia.es",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "96.96%",
+    "uptime": "96.72%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
-    "uptimeMonth": "63.16%",
-    "uptimeYear": "96.67%",
+    "uptimeMonth": "59.85%",
+    "uptimeYear": "96.39%",
     "time": 1002,
     "timeDay": 0,
     "timeWeek": 0,
-    "timeMonth": 1490,
+    "timeMonth": 1497,
     "timeYear": 1033,
     "dailyMinutesDown": {
-      "2022-03-22": 87,
+      "2022-03-23": 96,
+      "2022-03-22": 1440,
       "2022-03-21": 1440,
       "2022-03-20": 1440,
       "2022-03-19": 1440,
@@ -154,10 +155,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 32,
-    "timeDay": 8,
-    "timeWeek": 27,
-    "timeMonth": 24,
-    "timeYear": 33,
+    "timeDay": 187,
+    "timeWeek": 50,
+    "timeMonth": 30,
+    "timeYear": 34,
     "dailyMinutesDown": {}
   },
   {
@@ -166,7 +167,7 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "31.99%",
+    "uptime": "31.93%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "7.96%",
@@ -177,7 +178,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-03-22": 87,
+      "2022-03-23": 96,
+      "2022-03-22": 1440,
       "2022-03-21": 1440,
       "2022-03-20": 1440,
       "2022-03-19": 1440,
@@ -540,8 +542,7 @@
       "2021-03-27": 1440,
       "2021-03-26": 1440,
       "2021-03-25": 1440,
-      "2021-03-24": 1440,
-      "2021-03-23": 1440
+      "2021-03-24": 1440
     }
   }
 ]
