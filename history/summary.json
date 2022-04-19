@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 98,
-    "timeDay": 69,
-    "timeWeek": 79,
-    "timeMonth": 101,
+    "timeDay": 65,
+    "timeWeek": 76,
+    "timeMonth": 100,
     "timeYear": 97,
     "dailyMinutesDown": {
       "2021-09-25": 22
@@ -30,9 +30,9 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "99.97%",
     "uptimeYear": "99.99%",
-    "time": 207,
-    "timeDay": 120,
-    "timeWeek": 251,
+    "time": 206,
+    "timeDay": 93,
+    "timeWeek": 239,
     "timeMonth": 189,
     "timeYear": 220,
     "dailyMinutesDown": {
@@ -52,9 +52,9 @@
     "uptimeMonth": "99.95%",
     "uptimeYear": "99.99%",
     "time": 351,
-    "timeDay": 136,
-    "timeWeek": 317,
-    "timeMonth": 290,
+    "timeDay": 227,
+    "timeWeek": 318,
+    "timeMonth": 292,
     "timeYear": 342,
     "dailyMinutesDown": {
       "2022-04-14": 20,
@@ -69,18 +69,19 @@
     "icon": "https://favicons.githubusercontent.com/oficinaempresas.bankia.es",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "90.83%",
+    "uptime": "90.62%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "89.26%",
+    "uptimeYear": "88.99%",
     "time": 1002,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 1048,
     "dailyMinutesDown": {
-      "2022-04-18": 116,
+      "2022-04-19": 113,
+      "2022-04-18": 1440,
       "2022-04-17": 1440,
       "2022-04-16": 1440,
       "2022-04-15": 1440,
@@ -183,9 +184,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 32,
-    "timeDay": 96,
+    "timeDay": 15,
     "timeWeek": 25,
-    "timeMonth": 28,
+    "timeMonth": 27,
     "timeYear": 34,
     "dailyMinutesDown": {}
   },
@@ -195,7 +196,7 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "30.58%",
+    "uptime": "30.53%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -206,7 +207,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-04-18": 116,
+      "2022-04-19": 113,
+      "2022-04-18": 1440,
       "2022-04-17": 1440,
       "2022-04-16": 1440,
       "2022-04-15": 1440,
@@ -569,8 +571,7 @@
       "2021-04-23": 1440,
       "2021-04-22": 1440,
       "2021-04-21": 1440,
-      "2021-04-20": 1440,
-      "2021-04-19": 1440
+      "2021-04-20": 1440
     }
   }
 ]
