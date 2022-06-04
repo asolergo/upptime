@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 96,
-    "timeDay": 77,
-    "timeWeek": 94,
-    "timeMonth": 80,
+    "timeDay": 75,
+    "timeWeek": 96,
+    "timeMonth": 79,
     "timeYear": 97,
     "dailyMinutesDown": {
       "2021-09-25": 22
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 207,
-    "timeDay": 112,
-    "timeWeek": 200,
-    "timeMonth": 222,
+    "timeDay": 82,
+    "timeWeek": 180,
+    "timeMonth": 215,
     "timeYear": 226,
     "dailyMinutesDown": {
       "2022-03-29": 15,
@@ -52,9 +52,9 @@
     "uptimeMonth": "99.93%",
     "uptimeYear": "99.97%",
     "time": 344,
-    "timeDay": 109,
-    "timeWeek": 223,
-    "timeMonth": 276,
+    "timeDay": 104,
+    "timeWeek": 174,
+    "timeMonth": 271,
     "timeYear": 335,
     "dailyMinutesDown": {
       "2022-05-19": 30,
@@ -71,18 +71,19 @@
     "icon": "https://favicons.githubusercontent.com/oficinaempresas.bankia.es",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "82.00%",
+    "uptime": "81.83%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "76.68%",
-    "time": 1014,
+    "uptimeYear": "76.41%",
+    "time": 1015,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
-    "timeYear": 1094,
+    "timeYear": 1095,
     "dailyMinutesDown": {
-      "2022-06-03": 104,
+      "2022-06-04": 102,
+      "2022-06-03": 1440,
       "2022-06-02": 1440,
       "2022-06-01": 1440,
       "2022-05-31": 1440,
@@ -230,8 +231,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 30,
-    "timeDay": 25,
-    "timeWeek": 21,
+    "timeDay": 21,
+    "timeWeek": 23,
     "timeMonth": 17,
     "timeYear": 33,
     "dailyMinutesDown": {}
@@ -242,7 +243,7 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "28.46%",
+    "uptime": "28.41%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -253,7 +254,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-06-03": 105,
+      "2022-06-04": 102,
+      "2022-06-03": 1440,
       "2022-06-02": 1440,
       "2022-06-01": 1440,
       "2022-05-31": 1440,
@@ -616,8 +618,7 @@
       "2021-06-08": 1440,
       "2021-06-07": 1440,
       "2021-06-06": 1440,
-      "2021-06-05": 1440,
-      "2021-06-04": 1440
+      "2021-06-05": 1440
     }
   }
 ]
