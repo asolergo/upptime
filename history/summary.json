@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 95,
-    "timeDay": 63,
+    "timeDay": 62,
     "timeWeek": 66,
-    "timeMonth": 80,
+    "timeMonth": 79,
     "timeYear": 97,
     "dailyMinutesDown": {
       "2021-09-25": 22
@@ -30,10 +30,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "99.96%",
     "uptimeYear": "99.99%",
-    "time": 210,
-    "timeDay": 197,
-    "timeWeek": 226,
-    "timeMonth": 258,
+    "time": 211,
+    "timeDay": 392,
+    "timeWeek": 244,
+    "timeMonth": 262,
     "timeYear": 232,
     "dailyMinutesDown": {
       "2022-06-12": 18,
@@ -53,9 +53,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
     "time": 340,
-    "timeDay": 340,
-    "timeWeek": 343,
-    "timeMonth": 271,
+    "timeDay": 357,
+    "timeWeek": 346,
+    "timeMonth": 276,
     "timeYear": 334,
     "dailyMinutesDown": {
       "2022-05-19": 30,
@@ -72,18 +72,19 @@
     "icon": "https://favicons.githubusercontent.com/oficinaempresas.bankia.es",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "79.16%",
+    "uptime": "79.00%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "72.07%",
-    "time": 1029,
+    "uptimeYear": "71.79%",
+    "time": 1030,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
-    "timeYear": 1091,
+    "timeYear": 1092,
     "dailyMinutesDown": {
-      "2022-06-20": 116,
+      "2022-06-21": 117,
+      "2022-06-20": 1440,
       "2022-06-19": 1440,
       "2022-06-18": 1440,
       "2022-06-17": 1440,
@@ -254,7 +255,7 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "27.74%",
+    "uptime": "27.70%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -265,7 +266,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-06-20": 116,
+      "2022-06-21": 117,
+      "2022-06-20": 1440,
       "2022-06-19": 1440,
       "2022-06-18": 1440,
       "2022-06-17": 1440,
@@ -628,8 +630,7 @@
       "2021-06-25": 1440,
       "2021-06-24": 1440,
       "2021-06-23": 1440,
-      "2021-06-22": 1440,
-      "2021-06-21": 1440
+      "2021-06-22": 1440
     }
   }
 ]
