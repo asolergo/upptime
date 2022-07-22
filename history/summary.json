@@ -11,8 +11,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 97,
-    "timeDay": 86,
-    "timeWeek": 125,
+    "timeDay": 80,
+    "timeWeek": 120,
     "timeMonth": 117,
     "timeYear": 99,
     "dailyMinutesDown": {
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 219,
-    "timeDay": 223,
-    "timeWeek": 277,
-    "timeMonth": 211,
+    "timeDay": 174,
+    "timeWeek": 285,
+    "timeMonth": 208,
     "timeYear": 228,
     "dailyMinutesDown": {
       "2022-06-12": 18,
@@ -52,9 +52,9 @@
     "uptimeMonth": "98.80%",
     "uptimeYear": "99.87%",
     "time": 334,
-    "timeDay": 454,
-    "timeWeek": 413,
-    "timeMonth": 303,
+    "timeDay": 525,
+    "timeWeek": 466,
+    "timeMonth": 307,
     "timeYear": 331,
     "dailyMinutesDown": {
       "2022-07-08": 527,
@@ -72,18 +72,19 @@
     "icon": "https://favicons.githubusercontent.com/oficinaempresas.bankia.es",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "74.45%",
+    "uptime": "74.31%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
-    "uptimeYear": "63.61%",
-    "time": 1034,
+    "uptimeYear": "63.34%",
+    "time": 1036,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
-    "timeYear": 1142,
+    "timeYear": 1144,
     "dailyMinutesDown": {
-      "2022-07-21": 125,
+      "2022-07-22": 127,
+      "2022-07-21": 1440,
       "2022-07-20": 1440,
       "2022-07-19": 1440,
       "2022-07-18": 1440,
@@ -247,8 +248,7 @@
       "2021-08-02": 24,
       "2021-07-29": 24,
       "2021-07-25": 24,
-      "2021-07-24": 24,
-      "2021-07-22": 24
+      "2021-07-24": 24
     }
   },
   {
@@ -263,8 +263,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 30,
-    "timeDay": 13,
-    "timeWeek": 25,
+    "timeDay": 14,
+    "timeWeek": 24,
     "timeMonth": 25,
     "timeYear": 33,
     "dailyMinutesDown": {}
@@ -275,7 +275,7 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "26.53%",
+    "uptime": "26.49%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -286,7 +286,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-07-21": 125,
+      "2022-07-22": 127,
+      "2022-07-21": 1440,
       "2022-07-20": 1440,
       "2022-07-19": 1440,
       "2022-07-18": 1440,
@@ -649,8 +650,7 @@
       "2021-07-26": 1440,
       "2021-07-25": 1440,
       "2021-07-24": 1440,
-      "2021-07-23": 1440,
-      "2021-07-22": 1440
+      "2021-07-23": 1440
     }
   }
 ]
