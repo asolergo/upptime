@@ -11,8 +11,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 98,
-    "timeDay": 81,
-    "timeWeek": 126,
+    "timeDay": 71,
+    "timeWeek": 122,
     "timeMonth": 114,
     "timeYear": 100,
     "dailyMinutesDown": {
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 225,
-    "timeDay": 94,
-    "timeWeek": 207,
-    "timeMonth": 222,
+    "timeDay": 150,
+    "timeWeek": 142,
+    "timeMonth": 204,
     "timeYear": 228,
     "dailyMinutesDown": {
       "2022-06-12": 18,
@@ -46,16 +46,16 @@
     "icon": "https://favicons.githubusercontent.com/news.ycombinator.com",
     "slug": "hacker-news",
     "status": "up",
-    "uptime": "99.91%",
+    "uptime": "99.92%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.88%",
-    "time": 332,
-    "timeDay": 138,
-    "timeWeek": 221,
-    "timeMonth": 299,
-    "timeYear": 330,
+    "time": 333,
+    "timeDay": 433,
+    "timeWeek": 255,
+    "timeMonth": 302,
+    "timeYear": 331,
     "dailyMinutesDown": {
       "2022-07-08": 527,
       "2022-05-19": 30,
@@ -71,18 +71,19 @@
     "icon": "https://favicons.githubusercontent.com/oficinaempresas.bankia.es",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "68.41%",
+    "uptime": "68.29%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "51.09%",
+    "uptimeYear": "50.81%",
     "time": 1057,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
-    "timeYear": 1266,
+    "timeYear": 1268,
     "dailyMinutesDown": {
-      "2022-09-05": 146,
+      "2022-09-06": 150,
+      "2022-09-05": 1440,
       "2022-09-04": 1440,
       "2022-09-03": 1440,
       "2022-09-02": 1440,
@@ -275,8 +276,7 @@
       "2021-09-12": 23,
       "2021-09-11": 25,
       "2021-09-10": 24,
-      "2021-09-07": 24,
-      "2021-09-06": 21
+      "2021-09-07": 24
     }
   },
   {
@@ -291,8 +291,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 31,
-    "timeDay": 19,
-    "timeWeek": 29,
+    "timeDay": 9,
+    "timeWeek": 25,
     "timeMonth": 24,
     "timeYear": 31,
     "dailyMinutesDown": {}
@@ -303,7 +303,7 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "24.91%",
+    "uptime": "24.88%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -314,7 +314,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-09-05": 146,
+      "2022-09-06": 151,
+      "2022-09-05": 1440,
       "2022-09-04": 1440,
       "2022-09-03": 1440,
       "2022-09-02": 1440,
@@ -677,8 +678,7 @@
       "2021-09-10": 1440,
       "2021-09-09": 1440,
       "2021-09-08": 1440,
-      "2021-09-07": 1440,
-      "2021-09-06": 1440
+      "2021-09-07": 1440
     }
   }
 ]
