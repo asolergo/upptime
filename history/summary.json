@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 98,
-    "timeDay": 79,
-    "timeWeek": 87,
-    "timeMonth": 105,
+    "timeDay": 114,
+    "timeWeek": 93,
+    "timeMonth": 103,
     "timeYear": 99,
     "dailyMinutesDown": {
       "2021-09-25": 22
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 227,
-    "timeDay": 36,
-    "timeWeek": 279,
-    "timeMonth": 230,
+    "timeDay": 238,
+    "timeWeek": 292,
+    "timeMonth": 234,
     "timeYear": 230,
     "dailyMinutesDown": {
       "2022-06-12": 18,
@@ -52,9 +52,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.88%",
     "time": 332,
-    "timeDay": 85,
-    "timeWeek": 278,
-    "timeMonth": 285,
+    "timeDay": 417,
+    "timeWeek": 276,
+    "timeMonth": 288,
     "timeYear": 330,
     "dailyMinutesDown": {
       "2022-07-08": 527,
@@ -71,18 +71,19 @@
     "icon": "https://favicons.githubusercontent.com/oficinaempresas.bankia.es",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "67.58%",
+    "uptime": "67.46%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "49.19%",
-    "time": 1129,
+    "uptimeYear": "48.92%",
+    "time": 1131,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
-    "timeYear": 1294,
+    "timeYear": 1301,
     "dailyMinutesDown": {
-      "2022-09-12": 153,
+      "2022-09-13": 149,
+      "2022-09-12": 1440,
       "2022-09-11": 1440,
       "2022-09-10": 1440,
       "2022-09-09": 1440,
@@ -277,8 +278,7 @@
       "2021-09-19": 23,
       "2021-09-17": 26,
       "2021-09-15": 24,
-      "2021-09-14": 24,
-      "2021-09-13": 24
+      "2021-09-14": 24
     }
   },
   {
@@ -293,9 +293,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 31,
-    "timeDay": 19,
+    "timeDay": 13,
     "timeWeek": 22,
-    "timeMonth": 23,
+    "timeMonth": 21,
     "timeYear": 30,
     "dailyMinutesDown": {}
   },
@@ -305,7 +305,7 @@
     "icon": "https://favicons.githubusercontent.com/null",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "24.69%",
+    "uptime": "24.65%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -316,7 +316,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-09-12": 153,
+      "2022-09-13": 149,
+      "2022-09-12": 1440,
       "2022-09-11": 1440,
       "2022-09-10": 1440,
       "2022-09-09": 1440,
@@ -679,8 +680,7 @@
       "2021-09-17": 1440,
       "2021-09-16": 1440,
       "2021-09-15": 1440,
-      "2021-09-14": 1440,
-      "2021-09-13": 1440
+      "2021-09-14": 1440
     }
   }
 ]
