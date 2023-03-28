@@ -31,7 +31,7 @@
     "time": 218,
     "timeDay": 213,
     "timeWeek": 201,
-    "timeMonth": 230,
+    "timeMonth": 234,
     "timeYear": 219,
     "dailyMinutesDown": {
       "2023-01-25": 22,
@@ -44,19 +44,20 @@
     "url": "https://news.ycombinator.com",
     "icon": "https://icons.duckduckgo.com/ip3/news.ycombinator.com.ico",
     "slug": "hacker-news",
-    "status": "down",
-    "uptime": "99.92%",
-    "uptimeDay": "99.99%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "99.81%",
-    "uptimeYear": "99.85%",
+    "status": "up",
+    "uptime": "99.91%",
+    "uptimeDay": "93.11%",
+    "uptimeWeek": "99.02%",
+    "uptimeMonth": "99.58%",
+    "uptimeYear": "99.83%",
     "time": 316,
-    "timeDay": 0,
-    "timeWeek": 285,
-    "timeMonth": 295,
-    "timeYear": 318,
+    "timeDay": 408,
+    "timeWeek": 299,
+    "timeMonth": 305,
+    "timeYear": 319,
     "dailyMinutesDown": {
-      "2023-03-27": 0,
+      "2023-03-28": 56,
+      "2023-03-27": 44,
       "2023-03-13": 84,
       "2022-11-23": 17,
       "2022-10-28": 16,
@@ -73,7 +74,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "50.33%",
+    "uptime": "50.32%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "7.96%",
@@ -84,7 +85,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-03-27": 1397,
+      "2023-03-28": 56,
+      "2023-03-27": 1440,
       "2023-03-26": 1440,
       "2023-03-25": 1440,
       "2023-03-24": 1440,
@@ -447,8 +449,7 @@
       "2022-04-01": 1440,
       "2022-03-31": 1440,
       "2022-03-30": 1440,
-      "2022-03-29": 1440,
-      "2022-03-28": 1440
+      "2022-03-29": 1440
     }
   },
   {
@@ -486,7 +487,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-03-27": 1397,
+      "2023-03-28": 56,
+      "2023-03-27": 1440,
       "2023-03-26": 1440,
       "2023-03-25": 1440,
       "2023-03-24": 1440,
@@ -849,8 +851,7 @@
       "2022-04-01": 1440,
       "2022-03-31": 1440,
       "2022-03-30": 1440,
-      "2022-03-29": 1440,
-      "2022-03-28": 1440
+      "2022-03-29": 1440
     }
   }
 ]
