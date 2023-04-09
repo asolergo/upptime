@@ -11,8 +11,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 97,
-    "timeDay": 80,
-    "timeWeek": 80,
+    "timeDay": 82,
+    "timeWeek": 79,
     "timeMonth": 97,
     "timeYear": 101,
     "dailyMinutesDown": {}
@@ -29,10 +29,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 216,
-    "timeDay": 322,
-    "timeWeek": 204,
-    "timeMonth": 199,
-    "timeYear": 220,
+    "timeDay": 198,
+    "timeWeek": 206,
+    "timeMonth": 194,
+    "timeYear": 219,
     "dailyMinutesDown": {
       "2023-01-25": 22,
       "2022-06-12": 18
@@ -49,11 +49,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "99.58%",
     "uptimeYear": "99.83%",
-    "time": 316,
-    "timeDay": 122,
-    "timeWeek": 255,
-    "timeMonth": 281,
-    "timeYear": 318,
+    "time": 315,
+    "timeDay": 144,
+    "timeWeek": 261,
+    "timeMonth": 274,
+    "timeYear": 317,
     "dailyMinutesDown": {
       "2023-03-28": 56,
       "2023-03-27": 44,
@@ -73,18 +73,19 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "49.61%",
+    "uptime": "49.55%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
     "uptimeYear": "0.00%",
-    "time": 1628,
+    "time": 1632,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-04-08": 76,
+      "2023-04-09": 81,
+      "2023-04-08": 1440,
       "2023-04-07": 1440,
       "2023-04-06": 1440,
       "2023-04-05": 1440,
@@ -447,8 +448,7 @@
       "2022-04-13": 1440,
       "2022-04-12": 1440,
       "2022-04-11": 1440,
-      "2022-04-10": 1440,
-      "2022-04-09": 1440
+      "2022-04-10": 1440
     }
   },
   {
@@ -463,7 +463,7 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 23,
-    "timeDay": 19,
+    "timeDay": 20,
     "timeWeek": 16,
     "timeMonth": 21,
     "timeYear": 23,
@@ -475,7 +475,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "19.40%",
+    "uptime": "19.38%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -486,7 +486,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-04-08": 76,
+      "2023-04-09": 81,
+      "2023-04-08": 1440,
       "2023-04-07": 1440,
       "2023-04-06": 1440,
       "2023-04-05": 1440,
@@ -849,8 +850,7 @@
       "2022-04-13": 1440,
       "2022-04-12": 1440,
       "2022-04-11": 1440,
-      "2022-04-10": 1440,
-      "2022-04-09": 1440
+      "2022-04-10": 1440
     }
   }
 ]
