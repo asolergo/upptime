@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 102,
-    "timeDay": 74,
-    "timeWeek": 74,
-    "timeMonth": 89,
+    "timeDay": 86,
+    "timeWeek": 76,
+    "timeMonth": 90,
     "timeYear": 108,
     "dailyMinutesDown": {}
   },
@@ -29,10 +29,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 213,
-    "timeDay": 218,
-    "timeWeek": 246,
-    "timeMonth": 205,
-    "timeYear": 213,
+    "timeDay": 196,
+    "timeWeek": 236,
+    "timeMonth": 183,
+    "timeYear": 212,
     "dailyMinutesDown": {
       "2023-01-25": 22,
       "2022-06-12": 18
@@ -45,17 +45,16 @@
     "slug": "hacker-news",
     "status": "up",
     "uptime": "99.92%",
-    "uptimeDay": "99.05%",
-    "uptimeWeek": "99.64%",
-    "uptimeMonth": "99.92%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "99.77%",
+    "uptimeMonth": "99.95%",
     "uptimeYear": "99.84%",
-    "time": 315,
-    "timeDay": 273,
-    "timeWeek": 338,
-    "timeMonth": 307,
+    "time": 314,
+    "timeDay": 161,
+    "timeWeek": 315,
+    "timeMonth": 301,
     "timeYear": 323,
     "dailyMinutesDown": {
-      "2023-06-10": 14,
       "2023-06-08": 23,
       "2023-03-28": 56,
       "2023-03-27": 44,
@@ -72,18 +71,19 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "45.88%",
+    "uptime": "45.86%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
     "uptimeYear": "0.00%",
-    "time": 1648,
+    "time": 1662,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-06-10": 1044,
+      "2023-06-11": 111,
+      "2023-06-10": 1440,
       "2023-06-09": 1440,
       "2023-06-08": 1440,
       "2023-06-07": 1440,
@@ -446,8 +446,7 @@
       "2022-06-15": 1440,
       "2022-06-14": 1440,
       "2022-06-13": 1440,
-      "2022-06-12": 1440,
-      "2022-06-11": 1440
+      "2022-06-12": 1440
     }
   },
   {
@@ -462,8 +461,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 25,
-    "timeDay": 15,
-    "timeWeek": 14,
+    "timeDay": 19,
+    "timeWeek": 15,
     "timeMonth": 20,
     "timeYear": 26,
     "dailyMinutesDown": {}
@@ -485,7 +484,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-06-10": 1044,
+      "2023-06-11": 111,
+      "2023-06-10": 1440,
       "2023-06-09": 1440,
       "2023-06-08": 1440,
       "2023-06-07": 1440,
@@ -848,8 +848,7 @@
       "2022-06-15": 1440,
       "2022-06-14": 1440,
       "2022-06-13": 1440,
-      "2022-06-12": 1440,
-      "2022-06-11": 1440
+      "2022-06-12": 1440
     }
   }
 ]
