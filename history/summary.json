@@ -11,10 +11,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 103,
-    "timeDay": 184,
-    "timeWeek": 101,
-    "timeMonth": 96,
-    "timeYear": 109,
+    "timeDay": 57,
+    "timeWeek": 97,
+    "timeMonth": 92,
+    "timeYear": 108,
     "dailyMinutesDown": {}
   },
   {
@@ -29,8 +29,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 210,
-    "timeDay": 129,
-    "timeWeek": 118,
+    "timeDay": 151,
+    "timeWeek": 125,
     "timeMonth": 174,
     "timeYear": 208,
     "dailyMinutesDown": {
@@ -49,10 +49,10 @@
     "uptimeMonth": "99.90%",
     "uptimeYear": "99.84%",
     "time": 313,
-    "timeDay": 294,
-    "timeWeek": 283,
-    "timeMonth": 284,
-    "timeYear": 321,
+    "timeDay": 393,
+    "timeWeek": 325,
+    "timeMonth": 285,
+    "timeYear": 322,
     "dailyMinutesDown": {
       "2023-06-21": 21,
       "2023-06-08": 23,
@@ -71,18 +71,19 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "44.80%",
+    "uptime": "44.75%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
     "uptimeYear": "0.00%",
-    "time": 1489,
+    "time": 1506,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-07-01": 115,
+      "2023-07-02": 115,
+      "2023-07-01": 1440,
       "2023-06-30": 1440,
       "2023-06-29": 1440,
       "2023-06-28": 1440,
@@ -445,8 +446,7 @@
       "2022-07-06": 1440,
       "2022-07-05": 1440,
       "2022-07-04": 1440,
-      "2022-07-03": 1440,
-      "2022-07-02": 1440
+      "2022-07-03": 1440
     }
   },
   {
@@ -461,8 +461,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 25,
-    "timeDay": 72,
-    "timeWeek": 26,
+    "timeDay": 49,
+    "timeWeek": 30,
     "timeMonth": 22,
     "timeYear": 27,
     "dailyMinutesDown": {}
@@ -473,7 +473,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "17.85%",
+    "uptime": "17.83%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -484,7 +484,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-07-01": 115,
+      "2023-07-02": 115,
+      "2023-07-01": 1440,
       "2023-06-30": 1440,
       "2023-06-29": 1440,
       "2023-06-28": 1440,
@@ -847,8 +848,7 @@
       "2022-07-06": 1440,
       "2022-07-05": 1440,
       "2022-07-04": 1440,
-      "2022-07-03": 1440,
-      "2022-07-02": 1440
+      "2022-07-03": 1440
     }
   }
 ]
