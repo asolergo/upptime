@@ -11,8 +11,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 106,
-    "timeDay": 79,
-    "timeWeek": 79,
+    "timeDay": 61,
+    "timeWeek": 77,
     "timeMonth": 90,
     "timeYear": 107,
     "dailyMinutesDown": {
@@ -31,8 +31,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 213,
-    "timeDay": 139,
-    "timeWeek": 223,
+    "timeDay": 178,
+    "timeWeek": 219,
     "timeMonth": 214,
     "timeYear": 205,
     "dailyMinutesDown": {
@@ -51,10 +51,10 @@
     "uptimeMonth": "99.96%",
     "uptimeYear": "99.93%",
     "time": 316,
-    "timeDay": 416,
-    "timeWeek": 328,
-    "timeMonth": 329,
-    "timeYear": 321,
+    "timeDay": 440,
+    "timeWeek": 329,
+    "timeMonth": 330,
+    "timeYear": 322,
     "dailyMinutesDown": {
       "2023-09-13": 17,
       "2023-06-21": 21,
@@ -73,7 +73,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "41.15%",
+    "uptime": "41.10%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -84,7 +84,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-09-16": 66,
+      "2023-09-17": 72,
+      "2023-09-16": 1440,
       "2023-09-15": 1440,
       "2023-09-14": 1440,
       "2023-09-13": 1440,
@@ -447,8 +448,7 @@
       "2022-09-21": 1440,
       "2022-09-20": 1440,
       "2022-09-19": 1440,
-      "2022-09-18": 1440,
-      "2022-09-17": 1440
+      "2022-09-18": 1440
     }
   },
   {
@@ -463,7 +463,7 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 25,
-    "timeDay": 13,
+    "timeDay": 12,
     "timeWeek": 16,
     "timeMonth": 23,
     "timeYear": 26,
@@ -475,7 +475,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "16.64%",
+    "uptime": "16.62%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -486,7 +486,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-09-16": 66,
+      "2023-09-17": 72,
+      "2023-09-16": 1440,
       "2023-09-15": 1440,
       "2023-09-14": 1440,
       "2023-09-13": 1440,
@@ -849,8 +850,7 @@
       "2022-09-21": 1440,
       "2022-09-20": 1440,
       "2022-09-19": 1440,
-      "2022-09-18": 1440,
-      "2022-09-17": 1440
+      "2022-09-18": 1440
     }
   }
 ]
