@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 111,
-    "timeDay": 76,
-    "timeWeek": 204,
-    "timeMonth": 137,
+    "timeDay": 93,
+    "timeWeek": 206,
+    "timeMonth": 138,
     "timeYear": 111,
     "dailyMinutesDown": {
       "2023-07-13": 15
@@ -31,10 +31,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 212,
-    "timeDay": 185,
-    "timeWeek": 191,
-    "timeMonth": 228,
-    "timeYear": 207,
+    "timeDay": 161,
+    "timeWeek": 184,
+    "timeMonth": 229,
+    "timeYear": 206,
     "dailyMinutesDown": {
       "2023-01-25": 22
     }
@@ -46,17 +46,16 @@
     "slug": "hacker-news",
     "status": "up",
     "uptime": "99.92%",
-    "uptimeDay": "99.42%",
-    "uptimeWeek": "99.92%",
-    "uptimeMonth": "99.94%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "99.96%",
     "uptimeYear": "99.95%",
     "time": 316,
-    "timeDay": 294,
-    "timeWeek": 262,
-    "timeMonth": 307,
+    "timeDay": 299,
+    "timeWeek": 263,
+    "timeMonth": 306,
     "timeYear": 320,
     "dailyMinutesDown": {
-      "2023-10-12": 8,
       "2023-09-13": 17,
       "2023-06-21": 21,
       "2023-06-08": 23,
@@ -73,7 +72,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "40.01%",
+    "uptime": "40.00%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -84,7 +83,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-10-12": 1354,
+      "2023-10-13": 71,
+      "2023-10-12": 1440,
       "2023-10-11": 1440,
       "2023-10-10": 1440,
       "2023-10-09": 1440,
@@ -447,8 +447,7 @@
       "2022-10-17": 1440,
       "2022-10-16": 1440,
       "2022-10-15": 1440,
-      "2022-10-14": 1440,
-      "2022-10-13": 1440
+      "2022-10-14": 1440
     }
   },
   {
@@ -486,7 +485,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2023-10-12": 1354,
+      "2023-10-13": 71,
+      "2023-10-12": 1440,
       "2023-10-11": 1440,
       "2023-10-10": 1440,
       "2023-10-09": 1440,
@@ -849,8 +849,7 @@
       "2022-10-17": 1440,
       "2022-10-16": 1440,
       "2022-10-15": 1440,
-      "2022-10-14": 1440,
-      "2022-10-13": 1440
+      "2022-10-14": 1440
     }
   }
 ]
