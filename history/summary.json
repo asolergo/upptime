@@ -10,10 +10,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 111,
-    "timeDay": 55,
-    "timeWeek": 76,
-    "timeMonth": 94,
+    "time": 110,
+    "timeDay": 63,
+    "timeWeek": 72,
+    "timeMonth": 91,
     "timeYear": 112,
     "dailyMinutesDown": {
       "2023-07-13": 15
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 205,
-    "timeDay": 362,
-    "timeWeek": 191,
-    "timeMonth": 217,
+    "timeDay": 314,
+    "timeWeek": 232,
+    "timeMonth": 222,
     "timeYear": 199,
     "dailyMinutesDown": {
       "2023-01-25": 22
@@ -51,9 +51,9 @@
     "uptimeMonth": "99.43%",
     "uptimeYear": "99.90%",
     "time": 324,
-    "timeDay": 461,
-    "timeWeek": 261,
-    "timeMonth": 482,
+    "timeDay": 317,
+    "timeWeek": 282,
+    "timeMonth": 488,
     "timeYear": 320,
     "dailyMinutesDown": {
       "2023-12-15": 29,
@@ -73,7 +73,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "36.92%",
+    "uptime": "36.88%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -84,7 +84,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-01-02": 70,
+      "2024-01-03": 72,
+      "2024-01-02": 1440,
       "2024-01-01": 1440,
       "2023-12-31": 1440,
       "2023-12-30": 1440,
@@ -447,8 +448,7 @@
       "2023-01-07": 1440,
       "2023-01-06": 1440,
       "2023-01-05": 1440,
-      "2023-01-04": 1440,
-      "2023-01-03": 1440
+      "2023-01-04": 1440
     }
   },
   {
@@ -463,8 +463,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 25,
-    "timeDay": 11,
-    "timeWeek": 17,
+    "timeDay": 28,
+    "timeWeek": 18,
     "timeMonth": 18,
     "timeYear": 25,
     "dailyMinutesDown": {}
@@ -475,7 +475,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "15.19%",
+    "uptime": "15.18%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -486,7 +486,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-01-02": 71,
+      "2024-01-03": 72,
+      "2024-01-02": 1440,
       "2024-01-01": 1440,
       "2023-12-31": 1440,
       "2023-12-30": 1440,
@@ -849,8 +850,7 @@
       "2023-01-07": 1440,
       "2023-01-06": 1440,
       "2023-01-05": 1440,
-      "2023-01-04": 1440,
-      "2023-01-03": 1440
+      "2023-01-04": 1440
     }
   }
 ]
