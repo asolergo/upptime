@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 110,
-    "timeDay": 88,
-    "timeWeek": 84,
-    "timeMonth": 90,
+    "timeDay": 61,
+    "timeWeek": 82,
+    "timeMonth": 79,
     "timeYear": 112,
     "dailyMinutesDown": {
       "2023-07-13": 15
@@ -31,10 +31,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 202,
-    "timeDay": 200,
-    "timeWeek": 168,
-    "timeMonth": 204,
-    "timeYear": 199,
+    "timeDay": 154,
+    "timeWeek": 167,
+    "timeMonth": 205,
+    "timeYear": 198,
     "dailyMinutesDown": {
       "2023-01-25": 22
     }
@@ -51,10 +51,10 @@
     "uptimeMonth": "99.63%",
     "uptimeYear": "99.87%",
     "time": 321,
-    "timeDay": 448,
-    "timeWeek": 224,
-    "timeMonth": 249,
-    "timeYear": 316,
+    "timeDay": 379,
+    "timeWeek": 249,
+    "timeMonth": 256,
+    "timeYear": 315,
     "dailyMinutesDown": {
       "2024-01-10": 163,
       "2023-12-15": 29,
@@ -74,7 +74,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "36.23%",
+    "uptime": "36.20%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -85,7 +85,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-01-22": 77,
+      "2024-01-23": 76,
+      "2024-01-22": 1440,
       "2024-01-21": 1440,
       "2024-01-20": 1440,
       "2024-01-19": 1440,
@@ -448,8 +449,7 @@
       "2023-01-27": 1440,
       "2023-01-26": 1440,
       "2023-01-25": 1440,
-      "2023-01-24": 1440,
-      "2023-01-23": 1440
+      "2023-01-24": 1440
     }
   },
   {
@@ -464,8 +464,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 25,
-    "timeDay": 11,
-    "timeWeek": 18,
+    "timeDay": 13,
+    "timeWeek": 17,
     "timeMonth": 20,
     "timeYear": 25,
     "dailyMinutesDown": {}
@@ -476,7 +476,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "14.95%",
+    "uptime": "14.93%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -487,7 +487,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-01-22": 77,
+      "2024-01-23": 76,
+      "2024-01-22": 1440,
       "2024-01-21": 1440,
       "2024-01-20": 1440,
       "2024-01-19": 1440,
@@ -850,8 +851,7 @@
       "2023-01-27": 1440,
       "2023-01-26": 1440,
       "2023-01-25": 1440,
-      "2023-01-24": 1440,
-      "2023-01-23": 1440
+      "2023-01-24": 1440
     }
   }
 ]
