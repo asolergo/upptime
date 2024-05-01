@@ -70,7 +70,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "33.14%",
+    "uptime": "33.12%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -81,7 +81,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-05-01": 77,
+      "2024-05-01": 878,
       "2024-04-30": 1440,
       "2024-04-29": 1440,
       "2024-04-28": 1440,
@@ -453,18 +453,20 @@
     "url": "https://www.google.com",
     "icon": "https://icons.duckduckgo.com/ip3/www.google.com.ico",
     "slug": "test-for-head",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 25,
-    "timeDay": 23,
-    "timeWeek": 67,
-    "timeMonth": 40,
+    "timeDay": 71,
+    "timeWeek": 74,
+    "timeMonth": 43,
     "timeYear": 24,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2024-05-01": 0
+    }
   },
   {
     "name": "Secret Site",
@@ -472,7 +474,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "13.85%",
+    "uptime": "13.84%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -483,7 +485,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-05-01": 77,
+      "2024-05-01": 878,
       "2024-04-30": 1440,
       "2024-04-29": 1440,
       "2024-04-28": 1440,
