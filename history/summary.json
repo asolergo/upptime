@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 107,
-    "timeDay": 95,
-    "timeWeek": 94,
-    "timeMonth": 95,
+    "timeDay": 64,
+    "timeWeek": 78,
+    "timeMonth": 94,
     "timeYear": 106,
     "dailyMinutesDown": {
       "2024-05-01": 39,
@@ -32,9 +32,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 204,
-    "timeDay": 408,
-    "timeWeek": 306,
-    "timeMonth": 266,
+    "timeDay": 164,
+    "timeWeek": 300,
+    "timeMonth": 270,
     "timeYear": 205,
     "dailyMinutesDown": {}
   },
@@ -44,15 +44,15 @@
     "icon": "https://icons.duckduckgo.com/ip3/news.ycombinator.com.ico",
     "slug": "hacker-news",
     "status": "up",
-    "uptime": "99.91%",
+    "uptime": "99.92%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.91%",
     "time": 309,
-    "timeDay": 336,
-    "timeWeek": 345,
-    "timeMonth": 312,
+    "timeDay": 408,
+    "timeWeek": 346,
+    "timeMonth": 321,
     "timeYear": 312,
     "dailyMinutesDown": {
       "2024-03-26": 15,
@@ -69,7 +69,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "31.63%",
+    "uptime": "31.60%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -80,7 +80,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-06-26": 77,
+      "2024-06-27": 78,
+      "2024-06-26": 1440,
       "2024-06-25": 1440,
       "2024-06-24": 1440,
       "2024-06-23": 1440,
@@ -443,8 +444,7 @@
       "2023-07-02": 1440,
       "2023-07-01": 1440,
       "2023-06-30": 1440,
-      "2023-06-29": 1440,
-      "2023-06-28": 1440
+      "2023-06-29": 1440
     }
   },
   {
@@ -459,7 +459,7 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 26,
-    "timeDay": 12,
+    "timeDay": 15,
     "timeWeek": 25,
     "timeMonth": 24,
     "timeYear": 25,
@@ -473,7 +473,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "13.30%",
+    "uptime": "13.29%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -484,7 +484,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-06-26": 77,
+      "2024-06-27": 78,
+      "2024-06-26": 1440,
       "2024-06-25": 1440,
       "2024-06-24": 1440,
       "2024-06-23": 1440,
@@ -847,8 +848,7 @@
       "2023-07-02": 1440,
       "2023-07-01": 1440,
       "2023-06-30": 1440,
-      "2023-06-29": 1440,
-      "2023-06-28": 1440
+      "2023-06-29": 1440
     }
   }
 ]
