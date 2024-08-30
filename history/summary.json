@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 106,
-    "timeDay": 84,
-    "timeWeek": 101,
-    "timeMonth": 113,
+    "timeDay": 82,
+    "timeWeek": 100,
+    "timeMonth": 108,
     "timeYear": 106,
     "dailyMinutesDown": {
       "2024-05-01": 39
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 208,
-    "timeDay": 151,
-    "timeWeek": 251,
-    "timeMonth": 264,
+    "timeDay": 198,
+    "timeWeek": 245,
+    "timeMonth": 250,
     "timeYear": 213,
     "dailyMinutesDown": {
       "2024-07-10": 19
@@ -51,10 +51,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.91%",
     "time": 311,
-    "timeDay": 140,
-    "timeWeek": 340,
+    "timeDay": 374,
+    "timeWeek": 353,
     "timeMonth": 324,
-    "timeYear": 311,
+    "timeYear": 312,
     "dailyMinutesDown": {
       "2024-03-26": 15,
       "2024-01-10": 163,
@@ -70,7 +70,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "30.06%",
+    "uptime": "30.03%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -81,7 +81,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-08-29": 85,
+      "2024-08-30": 85,
+      "2024-08-29": 1440,
       "2024-08-28": 1440,
       "2024-08-27": 1440,
       "2024-08-26": 1440,
@@ -444,8 +445,7 @@
       "2023-09-04": 1440,
       "2023-09-03": 1440,
       "2023-09-02": 1440,
-      "2023-09-01": 1440,
-      "2023-08-31": 1440
+      "2023-09-01": 1440
     }
   },
   {
@@ -460,9 +460,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 27,
-    "timeDay": 20,
-    "timeWeek": 32,
-    "timeMonth": 37,
+    "timeDay": 13,
+    "timeWeek": 31,
+    "timeMonth": 34,
     "timeYear": 27,
     "dailyMinutesDown": {
       "2024-05-01": 47
@@ -485,7 +485,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-08-29": 85,
+      "2024-08-30": 85,
+      "2024-08-29": 1440,
       "2024-08-28": 1440,
       "2024-08-27": 1440,
       "2024-08-26": 1440,
@@ -848,8 +849,7 @@
       "2023-09-04": 1440,
       "2023-09-03": 1440,
       "2023-09-02": 1440,
-      "2023-09-01": 1440,
-      "2023-08-31": 1440
+      "2023-09-01": 1440
     }
   }
 ]
