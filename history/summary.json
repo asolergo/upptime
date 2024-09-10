@@ -11,8 +11,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 106,
-    "timeDay": 139,
-    "timeWeek": 89,
+    "timeDay": 79,
+    "timeWeek": 90,
     "timeMonth": 99,
     "timeYear": 106,
     "dailyMinutesDown": {
@@ -30,10 +30,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 210,
-    "timeDay": 216,
-    "timeWeek": 291,
-    "timeMonth": 227,
+    "time": 209,
+    "timeDay": 43,
+    "timeWeek": 249,
+    "timeMonth": 226,
     "timeYear": 212,
     "dailyMinutesDown": {
       "2024-07-10": 19
@@ -46,17 +46,16 @@
     "slug": "hacker-news",
     "status": "up",
     "uptime": "99.92%",
-    "uptimeDay": "99.42%",
-    "uptimeWeek": "99.92%",
-    "uptimeMonth": "99.98%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "100.00%",
     "uptimeYear": "99.91%",
     "time": 309,
-    "timeDay": 246,
-    "timeWeek": 316,
-    "timeMonth": 300,
-    "timeYear": 309,
+    "timeDay": 216,
+    "timeWeek": 284,
+    "timeMonth": 301,
+    "timeYear": 308,
     "dailyMinutesDown": {
-      "2024-09-09": 8,
       "2024-03-26": 15,
       "2024-01-10": 163,
       "2023-12-15": 29,
@@ -71,7 +70,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "29.79%",
+    "uptime": "29.78%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -82,7 +81,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-09-09": 1170,
+      "2024-09-10": 87,
+      "2024-09-09": 1440,
       "2024-09-08": 1440,
       "2024-09-07": 1440,
       "2024-09-06": 1440,
@@ -445,8 +445,7 @@
       "2023-09-15": 1440,
       "2023-09-14": 1440,
       "2023-09-13": 1440,
-      "2023-09-12": 1440,
-      "2023-09-11": 1440
+      "2023-09-12": 1440
     }
   },
   {
@@ -461,7 +460,7 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 26,
-    "timeDay": 25,
+    "timeDay": 21,
     "timeWeek": 17,
     "timeMonth": 26,
     "timeYear": 27,
@@ -486,7 +485,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-09-09": 1170,
+      "2024-09-10": 87,
+      "2024-09-09": 1440,
       "2024-09-08": 1440,
       "2024-09-07": 1440,
       "2024-09-06": 1440,
@@ -849,8 +849,7 @@
       "2023-09-15": 1440,
       "2023-09-14": 1440,
       "2023-09-13": 1440,
-      "2023-09-12": 1440,
-      "2023-09-11": 1440
+      "2023-09-12": 1440
     }
   }
 ]
