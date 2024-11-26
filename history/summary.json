@@ -11,8 +11,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 106,
-    "timeDay": 97,
-    "timeWeek": 97,
+    "timeDay": 83,
+    "timeWeek": 94,
     "timeMonth": 109,
     "timeYear": 99,
     "dailyMinutesDown": {
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 213,
-    "timeDay": 49,
-    "timeWeek": 212,
-    "timeMonth": 223,
+    "timeDay": 180,
+    "timeWeek": 159,
+    "timeMonth": 226,
     "timeYear": 217,
     "dailyMinutesDown": {
       "2024-07-10": 19
@@ -50,10 +50,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.92%",
-    "time": 311,
-    "timeDay": 97,
-    "timeWeek": 327,
-    "timeMonth": 301,
+    "time": 312,
+    "timeDay": 465,
+    "timeWeek": 349,
+    "timeMonth": 313,
     "timeYear": 315,
     "dailyMinutesDown": {
       "2024-03-26": 15,
@@ -68,7 +68,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "28.14%",
+    "uptime": "28.12%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -79,7 +79,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-11-25": 105,
+      "2024-11-26": 104,
+      "2024-11-25": 1440,
       "2024-11-24": 1440,
       "2024-11-23": 1440,
       "2024-11-22": 1440,
@@ -442,8 +443,7 @@
       "2023-12-01": 1440,
       "2023-11-30": 1440,
       "2023-11-29": 1440,
-      "2023-11-28": 1440,
-      "2023-11-27": 1440
+      "2023-11-28": 1440
     }
   },
   {
@@ -458,8 +458,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 26,
-    "timeDay": 20,
-    "timeWeek": 15,
+    "timeDay": 13,
+    "timeWeek": 14,
     "timeMonth": 27,
     "timeYear": 27,
     "dailyMinutesDown": {
@@ -472,7 +472,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "12.01%",
+    "uptime": "12.00%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -483,7 +483,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2024-11-25": 105,
+      "2024-11-26": 104,
+      "2024-11-25": 1440,
       "2024-11-24": 1440,
       "2024-11-23": 1440,
       "2024-11-22": 1440,
@@ -846,8 +847,7 @@
       "2023-12-01": 1440,
       "2023-11-30": 1440,
       "2023-11-29": 1440,
-      "2023-11-28": 1440,
-      "2023-11-27": 1440
+      "2023-11-28": 1440
     }
   }
 ]
