@@ -11,8 +11,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 109,
-    "timeDay": 82,
-    "timeWeek": 83,
+    "timeDay": 80,
+    "timeWeek": 80,
     "timeMonth": 89,
     "timeYear": 110,
     "dailyMinutesDown": {}
@@ -29,10 +29,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 223,
-    "timeDay": 228,
-    "timeWeek": 176,
-    "timeMonth": 199,
-    "timeYear": 224,
+    "timeDay": 70,
+    "timeWeek": 146,
+    "timeMonth": 200,
+    "timeYear": 222,
     "dailyMinutesDown": {}
   },
   {
@@ -47,9 +47,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
     "time": 316,
-    "timeDay": 317,
-    "timeWeek": 343,
-    "timeMonth": 321,
+    "timeDay": 464,
+    "timeWeek": 352,
+    "timeMonth": 322,
     "timeYear": 320,
     "dailyMinutesDown": {
       "2025-05-27": 16,
@@ -64,7 +64,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "24.01%",
+    "uptime": "24.00%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -75,7 +75,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-07-20": 140,
+      "2025-07-21": 131,
+      "2025-07-20": 1440,
       "2025-07-19": 1440,
       "2025-07-18": 1440,
       "2025-07-17": 1440,
@@ -438,8 +439,7 @@
       "2024-07-25": 1440,
       "2024-07-24": 1440,
       "2024-07-23": 1440,
-      "2024-07-22": 1440,
-      "2024-07-21": 1440
+      "2024-07-22": 1440
     }
   },
   {
@@ -454,9 +454,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 31,
-    "timeDay": 16,
+    "timeDay": 13,
     "timeWeek": 13,
-    "timeMonth": 18,
+    "timeMonth": 19,
     "timeYear": 31,
     "dailyMinutesDown": {}
   },
@@ -477,7 +477,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-07-20": 140,
+      "2025-07-21": 131,
+      "2025-07-20": 1440,
       "2025-07-19": 1440,
       "2025-07-18": 1440,
       "2025-07-17": 1440,
@@ -840,8 +841,7 @@
       "2024-07-25": 1440,
       "2024-07-24": 1440,
       "2024-07-23": 1440,
-      "2024-07-22": 1440,
-      "2024-07-21": 1440
+      "2024-07-22": 1440
     }
   }
 ]
