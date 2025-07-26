@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 109,
-    "timeDay": 195,
-    "timeWeek": 106,
-    "timeMonth": 92,
+    "timeDay": 99,
+    "timeWeek": 108,
+    "timeMonth": 93,
     "timeYear": 110,
     "dailyMinutesDown": {}
   },
@@ -28,11 +28,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 222,
-    "timeDay": 155,
-    "timeWeek": 141,
-    "timeMonth": 206,
-    "timeYear": 222,
+    "time": 223,
+    "timeDay": 355,
+    "timeWeek": 175,
+    "timeMonth": 215,
+    "timeYear": 223,
     "dailyMinutesDown": {}
   },
   {
@@ -46,10 +46,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
-    "time": 316,
-    "timeDay": 325,
-    "timeWeek": 358,
-    "timeMonth": 329,
+    "time": 315,
+    "timeDay": 134,
+    "timeWeek": 323,
+    "timeMonth": 317,
     "timeYear": 321,
     "dailyMinutesDown": {
       "2025-05-27": 16,
@@ -64,7 +64,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "23.94%",
+    "uptime": "23.92%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -75,7 +75,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-07-25": 125,
+      "2025-07-26": 121,
+      "2025-07-25": 1440,
       "2025-07-24": 1440,
       "2025-07-23": 1440,
       "2025-07-22": 1440,
@@ -438,8 +439,7 @@
       "2024-07-30": 1440,
       "2024-07-29": 1440,
       "2024-07-28": 1440,
-      "2024-07-27": 1440,
-      "2024-07-26": 1440
+      "2024-07-27": 1440
     }
   },
   {
@@ -454,9 +454,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 31,
-    "timeDay": 40,
+    "timeDay": 19,
     "timeWeek": 21,
-    "timeMonth": 19,
+    "timeMonth": 17,
     "timeYear": 30,
     "dailyMinutesDown": {}
   },
@@ -477,7 +477,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-07-25": 125,
+      "2025-07-26": 121,
+      "2025-07-25": 1440,
       "2025-07-24": 1440,
       "2025-07-23": 1440,
       "2025-07-22": 1440,
@@ -840,8 +841,7 @@
       "2024-07-30": 1440,
       "2024-07-29": 1440,
       "2024-07-28": 1440,
-      "2024-07-27": 1440,
-      "2024-07-26": 1440
+      "2024-07-27": 1440
     }
   }
 ]
