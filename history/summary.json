@@ -10,11 +10,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 110,
-    "timeDay": 158,
-    "timeWeek": 97,
-    "timeMonth": 94,
-    "timeYear": 112,
+    "time": 111,
+    "timeDay": 783,
+    "timeWeek": 197,
+    "timeMonth": 118,
+    "timeYear": 113,
     "dailyMinutesDown": {
       "2025-08-20": 15
     }
@@ -31,9 +31,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 220,
-    "timeDay": 165,
-    "timeWeek": 119,
-    "timeMonth": 198,
+    "timeDay": 187,
+    "timeWeek": 134,
+    "timeMonth": 196,
     "timeYear": 215,
     "dailyMinutesDown": {}
   },
@@ -48,9 +48,9 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
-    "time": 315,
-    "timeDay": 391,
-    "timeWeek": 312,
+    "time": 316,
+    "timeDay": 409,
+    "timeWeek": 308,
     "timeMonth": 311,
     "timeYear": 318,
     "dailyMinutesDown": {
@@ -66,7 +66,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "22.60%",
+    "uptime": "22.59%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -77,7 +77,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-10-29": 115,
+      "2025-10-30": 114,
+      "2025-10-29": 1440,
       "2025-10-28": 1440,
       "2025-10-27": 1440,
       "2025-10-26": 1440,
@@ -440,8 +441,7 @@
       "2024-11-03": 1440,
       "2024-11-02": 1440,
       "2024-11-01": 1440,
-      "2024-10-31": 1440,
-      "2024-10-30": 1440
+      "2024-10-31": 1440
     }
   },
   {
@@ -456,8 +456,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 29,
-    "timeDay": 61,
-    "timeWeek": 22,
+    "timeDay": 40,
+    "timeWeek": 27,
     "timeMonth": 21,
     "timeYear": 29,
     "dailyMinutesDown": {}
@@ -468,7 +468,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "secret-site",
     "status": "down",
-    "uptime": "9.88%",
+    "uptime": "9.87%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -479,7 +479,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-10-29": 115,
+      "2025-10-30": 114,
+      "2025-10-29": 1440,
       "2025-10-28": 1440,
       "2025-10-27": 1440,
       "2025-10-26": 1440,
@@ -842,8 +843,7 @@
       "2024-11-03": 1440,
       "2024-11-02": 1440,
       "2024-11-01": 1440,
-      "2024-10-31": 1440,
-      "2024-10-30": 1440
+      "2024-10-31": 1440
     }
   }
 ]
