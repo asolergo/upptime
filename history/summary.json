@@ -10,11 +10,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 118,
-    "timeDay": 78,
-    "timeWeek": 93,
-    "timeMonth": 221,
-    "timeYear": 123,
+    "time": 122,
+    "timeDay": 1986,
+    "timeWeek": 366,
+    "timeMonth": 285,
+    "timeYear": 128,
     "dailyMinutesDown": {
       "2025-08-20": 15
     }
@@ -26,18 +26,16 @@
     "slug": "wikipedia",
     "status": "up",
     "uptime": "100.00%",
-    "uptimeDay": "99.15%",
-    "uptimeWeek": "99.88%",
-    "uptimeMonth": "99.97%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 218,
-    "timeDay": 333,
-    "timeWeek": 378,
-    "timeMonth": 226,
-    "timeYear": 214,
-    "dailyMinutesDown": {
-      "2025-12-03": 12
-    }
+    "timeDay": 200,
+    "timeWeek": 396,
+    "timeMonth": 232,
+    "timeYear": 215,
+    "dailyMinutesDown": {}
   },
   {
     "name": "Hacker News",
@@ -51,9 +49,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
     "time": 313,
-    "timeDay": 96,
-    "timeWeek": 281,
-    "timeMonth": 269,
+    "timeDay": 305,
+    "timeWeek": 274,
+    "timeMonth": 275,
     "timeYear": 313,
     "dailyMinutesDown": {
       "2025-05-27": 16,
@@ -79,7 +77,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-12-03": 1070,
+      "2025-12-04": 117,
+      "2025-12-03": 1440,
       "2025-12-02": 1440,
       "2025-12-01": 1440,
       "2025-11-30": 1440,
@@ -442,8 +441,7 @@
       "2024-12-08": 1440,
       "2024-12-07": 1440,
       "2024-12-06": 1440,
-      "2024-12-05": 1440,
-      "2024-12-04": 1440
+      "2024-12-05": 1440
     }
   },
   {
@@ -457,11 +455,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 29,
-    "timeDay": 19,
-    "timeWeek": 24,
-    "timeMonth": 33,
-    "timeYear": 30,
+    "time": 34,
+    "timeDay": 2469,
+    "timeWeek": 375,
+    "timeMonth": 115,
+    "timeYear": 36,
     "dailyMinutesDown": {}
   },
   {
@@ -481,7 +479,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-12-03": 1070,
+      "2025-12-04": 117,
+      "2025-12-03": 1440,
       "2025-12-02": 1440,
       "2025-12-01": 1440,
       "2025-11-30": 1440,
@@ -844,8 +843,7 @@
       "2024-12-08": 1440,
       "2024-12-07": 1440,
       "2024-12-06": 1440,
-      "2024-12-05": 1440,
-      "2024-12-04": 1440
+      "2024-12-05": 1440
     }
   }
 ]
