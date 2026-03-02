@@ -10,10 +10,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.98%",
-    "time": 134,
-    "timeDay": 87,
-    "timeWeek": 122,
-    "timeMonth": 123,
+    "time": 135,
+    "timeDay": 127,
+    "timeWeek": 125,
+    "timeMonth": 124,
     "timeYear": 141,
     "dailyMinutesDown": {
       "2025-12-16": 40,
@@ -34,9 +34,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 210,
-    "timeDay": 190,
-    "timeWeek": 254,
-    "timeMonth": 196,
+    "timeDay": 176,
+    "timeWeek": 248,
+    "timeMonth": 200,
     "timeYear": 197,
     "dailyMinutesDown": {}
   },
@@ -52,10 +52,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
     "time": 309,
-    "timeDay": 380,
-    "timeWeek": 240,
-    "timeMonth": 307,
-    "timeYear": 309,
+    "timeDay": 328,
+    "timeWeek": 265,
+    "timeMonth": 306,
+    "timeYear": 308,
     "dailyMinutesDown": {
       "2025-05-27": 16,
       "2025-05-11": 103,
@@ -69,7 +69,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "21.09%",
+    "uptime": "21.08%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "7.96%",
@@ -80,7 +80,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-03-01": 166,
+      "2026-03-02": 154,
+      "2026-03-01": 1440,
       "2026-02-28": 1440,
       "2026-02-27": 1440,
       "2026-02-26": 1440,
@@ -443,8 +444,7 @@
       "2025-03-06": 1440,
       "2025-03-05": 1440,
       "2025-03-04": 1440,
-      "2025-03-03": 1440,
-      "2025-03-02": 1440
+      "2025-03-03": 1440
     }
   },
   {
@@ -459,8 +459,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 38,
-    "timeDay": 38,
-    "timeWeek": 45,
+    "timeDay": 52,
+    "timeWeek": 49,
     "timeMonth": 54,
     "timeYear": 43,
     "dailyMinutesDown": {}
@@ -482,7 +482,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-03-01": 166,
+      "2026-03-02": 154,
+      "2026-03-01": 1440,
       "2026-02-28": 1440,
       "2026-02-27": 1440,
       "2026-02-26": 1440,
@@ -845,8 +846,7 @@
       "2025-03-06": 1440,
       "2025-03-05": 1440,
       "2025-03-04": 1440,
-      "2025-03-03": 1440,
-      "2025-03-02": 1440
+      "2025-03-03": 1440
     }
   }
 ]
