@@ -11,10 +11,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.98%",
     "time": 134,
-    "timeDay": 117,
-    "timeWeek": 116,
+    "timeDay": 97,
+    "timeWeek": 111,
     "timeMonth": 108,
-    "timeYear": 141,
+    "timeYear": 140,
     "dailyMinutesDown": {
       "2025-12-16": 40,
       "2025-12-13": 17,
@@ -34,9 +34,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 211,
-    "timeDay": 253,
-    "timeWeek": 244,
-    "timeMonth": 210,
+    "timeDay": 47,
+    "timeWeek": 224,
+    "timeMonth": 209,
     "timeYear": 200,
     "dailyMinutesDown": {}
   },
@@ -52,10 +52,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
     "time": 310,
-    "timeDay": 286,
-    "timeWeek": 321,
-    "timeMonth": 304,
-    "timeYear": 308,
+    "timeDay": 105,
+    "timeWeek": 298,
+    "timeMonth": 294,
+    "timeYear": 307,
     "dailyMinutesDown": {
       "2025-05-27": 16,
       "2025-05-11": 103,
@@ -69,7 +69,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "20.96%",
+    "uptime": "20.95%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "7.96%",
@@ -80,7 +80,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-03-12": 154,
+      "2026-03-13": 152,
+      "2026-03-12": 1440,
       "2026-03-11": 1440,
       "2026-03-10": 1440,
       "2026-03-09": 1440,
@@ -443,8 +444,7 @@
       "2025-03-17": 1440,
       "2025-03-16": 1440,
       "2025-03-15": 1440,
-      "2025-03-14": 1440,
-      "2025-03-13": 1440
+      "2025-03-14": 1440
     }
   },
   {
@@ -458,11 +458,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 38,
-    "timeDay": 28,
+    "time": 39,
+    "timeDay": 23,
     "timeWeek": 34,
     "timeMonth": 32,
-    "timeYear": 43,
+    "timeYear": 42,
     "dailyMinutesDown": {}
   },
   {
@@ -482,7 +482,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-03-12": 154,
+      "2026-03-13": 152,
+      "2026-03-12": 1440,
       "2026-03-11": 1440,
       "2026-03-10": 1440,
       "2026-03-09": 1440,
@@ -845,8 +846,7 @@
       "2025-03-17": 1440,
       "2025-03-16": 1440,
       "2025-03-15": 1440,
-      "2025-03-14": 1440,
-      "2025-03-13": 1440
+      "2025-03-14": 1440
     }
   }
 ]
