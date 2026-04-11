@@ -12,8 +12,8 @@
     "uptimeYear": "99.97%",
     "time": 136,
     "timeDay": 234,
-    "timeWeek": 163,
-    "timeMonth": 138,
+    "timeWeek": 165,
+    "timeMonth": 135,
     "timeYear": 141,
     "dailyMinutesDown": {
       "2026-04-10": 54,
@@ -35,10 +35,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 208,
-    "timeDay": 211,
-    "timeWeek": 136,
-    "timeMonth": 168,
-    "timeYear": 201,
+    "timeDay": 228,
+    "timeWeek": 135,
+    "timeMonth": 170,
+    "timeYear": 202,
     "dailyMinutesDown": {}
   },
   {
@@ -53,9 +53,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
     "time": 307,
-    "timeDay": 291,
-    "timeWeek": 251,
-    "timeMonth": 289,
+    "timeDay": 120,
+    "timeWeek": 246,
+    "timeMonth": 283,
     "timeYear": 307,
     "dailyMinutesDown": {
       "2025-05-27": 16,
@@ -70,7 +70,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "20.64%",
+    "uptime": "20.63%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -81,7 +81,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-04-10": 638,
+      "2026-04-11": 162,
+      "2026-04-10": 1440,
       "2026-04-09": 1440,
       "2026-04-08": 1440,
       "2026-04-07": 1440,
@@ -444,8 +445,7 @@
       "2025-04-15": 1440,
       "2025-04-14": 1440,
       "2025-04-13": 1440,
-      "2025-04-12": 1440,
-      "2025-04-11": 1440
+      "2025-04-12": 1440
     }
   },
   {
@@ -460,9 +460,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 39,
-    "timeDay": 18,
-    "timeWeek": 19,
-    "timeMonth": 31,
+    "timeDay": 21,
+    "timeWeek": 18,
+    "timeMonth": 29,
     "timeYear": 39,
     "dailyMinutesDown": {}
   },
@@ -483,7 +483,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-04-10": 638,
+      "2026-04-11": 162,
+      "2026-04-10": 1440,
       "2026-04-09": 1440,
       "2026-04-08": 1440,
       "2026-04-07": 1440,
@@ -846,8 +847,7 @@
       "2025-04-15": 1440,
       "2025-04-14": 1440,
       "2025-04-13": 1440,
-      "2025-04-12": 1440,
-      "2025-04-11": 1440
+      "2025-04-12": 1440
     }
   }
 ]
