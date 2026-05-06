@@ -11,7 +11,7 @@
     "uptimeMonth": "99.88%",
     "uptimeYear": "99.97%",
     "time": 136,
-    "timeDay": 91,
+    "timeDay": 112,
     "timeWeek": 90,
     "timeMonth": 115,
     "timeYear": 139,
@@ -35,9 +35,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 205,
-    "timeDay": 327,
+    "timeDay": 206,
     "timeWeek": 206,
-    "timeMonth": 177,
+    "timeMonth": 182,
     "timeYear": 202,
     "dailyMinutesDown": {}
   },
@@ -53,9 +53,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.97%",
     "time": 307,
-    "timeDay": 124,
-    "timeWeek": 346,
-    "timeMonth": 299,
+    "timeDay": 410,
+    "timeWeek": 347,
+    "timeMonth": 309,
     "timeYear": 304,
     "dailyMinutesDown": {
       "2025-05-27": 16,
@@ -70,7 +70,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "20.37%",
+    "uptime": "20.36%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -81,7 +81,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-05-05": 206,
+      "2026-05-06": 217,
+      "2026-05-05": 1440,
       "2026-05-04": 1440,
       "2026-05-03": 1440,
       "2026-05-02": 1440,
@@ -444,8 +445,7 @@
       "2025-05-10": 1440,
       "2025-05-09": 1440,
       "2025-05-08": 1440,
-      "2025-05-07": 1440,
-      "2025-05-06": 1440
+      "2025-05-07": 1440
     }
   },
   {
@@ -460,8 +460,8 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 38,
-    "timeDay": 18,
-    "timeWeek": 18,
+    "timeDay": 28,
+    "timeWeek": 19,
     "timeMonth": 19,
     "timeYear": 38,
     "dailyMinutesDown": {}
@@ -483,7 +483,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-05-05": 206,
+      "2026-05-06": 217,
+      "2026-05-05": 1440,
       "2026-05-04": 1440,
       "2026-05-03": 1440,
       "2026-05-02": 1440,
@@ -846,8 +847,7 @@
       "2025-05-10": 1440,
       "2025-05-09": 1440,
       "2025-05-08": 1440,
-      "2025-05-07": 1440,
-      "2025-05-06": 1440
+      "2025-05-07": 1440
     }
   }
 ]
