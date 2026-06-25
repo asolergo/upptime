@@ -11,10 +11,10 @@
     "uptimeMonth": "99.48%",
     "uptimeYear": "99.92%",
     "time": 132,
-    "timeDay": 111,
+    "timeDay": 75,
     "timeWeek": 75,
     "timeMonth": 84,
-    "timeYear": 136,
+    "timeYear": 135,
     "dailyMinutesDown": {
       "2025-08-20": 15,
       "2025-12-12": 20,
@@ -37,9 +37,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 194,
-    "timeDay": 264,
-    "timeWeek": 236,
-    "timeMonth": 209,
+    "timeDay": 40,
+    "timeWeek": 195,
+    "timeMonth": 202,
     "timeYear": 200,
     "dailyMinutesDown": {}
   },
@@ -54,10 +54,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 308,
-    "timeDay": 393,
-    "timeWeek": 295,
-    "timeMonth": 297,
+    "time": 307,
+    "timeDay": 141,
+    "timeWeek": 284,
+    "timeMonth": 299,
     "timeYear": 297,
     "dailyMinutesDown": {}
   },
@@ -67,7 +67,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "19.85%",
+    "uptime": "19.84%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -78,7 +78,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-06-24": 239,
+      "2026-06-25": 240,
+      "2026-06-24": 1440,
       "2026-06-23": 1440,
       "2026-06-22": 1440,
       "2026-06-21": 1440,
@@ -441,8 +442,7 @@
       "2025-06-29": 1440,
       "2025-06-28": 1440,
       "2025-06-27": 1440,
-      "2025-06-26": 1440,
-      "2025-06-25": 1440
+      "2025-06-26": 1440
     }
   },
   {
@@ -457,9 +457,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 40,
-    "timeDay": 72,
-    "timeWeek": 39,
-    "timeMonth": 36,
+    "timeDay": 57,
+    "timeWeek": 43,
+    "timeMonth": 37,
     "timeYear": 40,
     "dailyMinutesDown": {}
   },
@@ -480,7 +480,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-06-24": 239,
+      "2026-06-25": 240,
+      "2026-06-24": 1440,
       "2026-06-23": 1440,
       "2026-06-22": 1440,
       "2026-06-21": 1440,
@@ -843,8 +844,7 @@
       "2025-06-29": 1440,
       "2025-06-28": 1440,
       "2025-06-27": 1440,
-      "2025-06-26": 1440,
-      "2025-06-25": 1440
+      "2025-06-26": 1440
     }
   }
 ]
