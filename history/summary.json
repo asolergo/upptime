@@ -6,15 +6,15 @@
     "slug": "google",
     "status": "up",
     "uptime": "99.98%",
-    "uptimeDay": "95.28%",
+    "uptimeDay": "100.00%",
     "uptimeWeek": "99.33%",
     "uptimeMonth": "99.84%",
     "uptimeYear": "99.91%",
     "time": 129,
-    "timeDay": 197,
+    "timeDay": 114,
     "timeWeek": 120,
-    "timeMonth": 87,
-    "timeYear": 134,
+    "timeMonth": 89,
+    "timeYear": 135,
     "dailyMinutesDown": {
       "2025-08-20": 15,
       "2025-12-12": 20,
@@ -38,9 +38,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 196,
-    "timeDay": 212,
-    "timeWeek": 297,
-    "timeMonth": 167,
+    "timeDay": 248,
+    "timeWeek": 301,
+    "timeMonth": 174,
     "timeYear": 195,
     "dailyMinutesDown": {}
   },
@@ -55,11 +55,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 299,
-    "timeDay": 267,
-    "timeWeek": 235,
-    "timeMonth": 221,
-    "timeYear": 288,
+    "time": 300,
+    "timeDay": 582,
+    "timeWeek": 278,
+    "timeMonth": 226,
+    "timeYear": 289,
     "dailyMinutesDown": {}
   },
   {
@@ -68,7 +68,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "19.51%",
+    "uptime": "19.50%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "1.38%",
@@ -79,7 +79,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-07-28": 170,
+      "2026-07-29": 177,
+      "2026-07-28": 1440,
       "2026-07-27": 1440,
       "2026-07-26": 1440,
       "2026-07-25": 1440,
@@ -442,8 +443,7 @@
       "2025-08-02": 1440,
       "2025-08-01": 1440,
       "2025-07-31": 1440,
-      "2025-07-30": 1440,
-      "2025-07-29": 1440
+      "2025-07-30": 1440
     }
   },
   {
@@ -458,9 +458,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 40,
-    "timeDay": 33,
-    "timeWeek": 38,
-    "timeMonth": 38,
+    "timeDay": 73,
+    "timeWeek": 41,
+    "timeMonth": 40,
     "timeYear": 42,
     "dailyMinutesDown": {}
   },
@@ -481,7 +481,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-07-28": 170,
+      "2026-07-29": 177,
+      "2026-07-28": 1440,
       "2026-07-27": 1440,
       "2026-07-26": 1440,
       "2026-07-25": 1440,
@@ -844,8 +845,7 @@
       "2025-08-02": 1440,
       "2025-08-01": 1440,
       "2025-07-31": 1440,
-      "2025-07-30": 1440,
-      "2025-07-29": 1440
+      "2025-07-30": 1440
     }
   }
 ]
