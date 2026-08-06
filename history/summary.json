@@ -10,10 +10,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "99.84%",
     "uptimeYear": "99.91%",
-    "time": 128,
-    "timeDay": 75,
-    "timeWeek": 70,
-    "timeMonth": 88,
+    "time": 127,
+    "timeDay": 54,
+    "timeWeek": 68,
+    "timeMonth": 87,
     "timeYear": 134,
     "dailyMinutesDown": {
       "2025-08-20": 15,
@@ -37,10 +37,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 197,
-    "timeDay": 41,
-    "timeWeek": 131,
-    "timeMonth": 184,
+    "time": 196,
+    "timeDay": 80,
+    "timeWeek": 132,
+    "timeMonth": 176,
     "timeYear": 194,
     "dailyMinutesDown": {}
   },
@@ -56,9 +56,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 298,
-    "timeDay": 75,
-    "timeWeek": 210,
-    "timeMonth": 246,
+    "timeDay": 367,
+    "timeWeek": 217,
+    "timeMonth": 248,
     "timeYear": 286,
     "dailyMinutesDown": {}
   },
@@ -68,7 +68,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "19.43%",
+    "uptime": "19.42%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -79,7 +79,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-08-05": 170,
+      "2026-08-06": 173,
+      "2026-08-05": 1440,
       "2026-08-04": 1440,
       "2026-08-03": 1440,
       "2026-08-02": 1440,
@@ -442,8 +443,7 @@
       "2025-08-10": 1440,
       "2025-08-09": 1440,
       "2025-08-08": 1440,
-      "2025-08-07": 1440,
-      "2025-08-06": 1440
+      "2025-08-07": 1440
     }
   },
   {
@@ -458,9 +458,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 38,
-    "timeDay": 41,
-    "timeWeek": 36,
-    "timeMonth": 39,
+    "timeDay": 19,
+    "timeWeek": 34,
+    "timeMonth": 38,
     "timeYear": 42,
     "dailyMinutesDown": {}
   },
@@ -481,7 +481,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-08-05": 170,
+      "2026-08-06": 173,
+      "2026-08-05": 1440,
       "2026-08-04": 1440,
       "2026-08-03": 1440,
       "2026-08-02": 1440,
@@ -844,8 +845,7 @@
       "2025-08-10": 1440,
       "2025-08-09": 1440,
       "2025-08-08": 1440,
-      "2025-08-07": 1440,
-      "2025-08-06": 1440
+      "2025-08-07": 1440
     }
   }
 ]
