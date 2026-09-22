@@ -11,9 +11,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.91%",
     "time": 126,
-    "timeDay": 114,
-    "timeWeek": 85,
-    "timeMonth": 87,
+    "timeDay": 110,
+    "timeWeek": 92,
+    "timeMonth": 88,
     "timeYear": 131,
     "dailyMinutesDown": {
       "2025-12-12": 20,
@@ -37,10 +37,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 197,
-    "timeDay": 525,
-    "timeWeek": 205,
-    "timeMonth": 202,
-    "timeYear": 194,
+    "timeDay": 265,
+    "timeWeek": 209,
+    "timeMonth": 210,
+    "timeYear": 195,
     "dailyMinutesDown": {}
   },
   {
@@ -54,11 +54,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 289,
-    "timeDay": 213,
-    "timeWeek": 183,
-    "timeMonth": 219,
-    "timeYear": 277,
+    "time": 288,
+    "timeDay": 205,
+    "timeWeek": 199,
+    "timeMonth": 223,
+    "timeYear": 276,
     "dailyMinutesDown": {}
   },
   {
@@ -67,7 +67,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "18.99%",
+    "uptime": "18.98%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -78,7 +78,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-09-21": 253,
+      "2026-09-22": 249,
+      "2026-09-21": 1440,
       "2026-09-20": 1440,
       "2026-09-19": 1440,
       "2026-09-18": 1440,
@@ -441,8 +442,7 @@
       "2025-09-26": 1440,
       "2025-09-25": 1440,
       "2025-09-24": 1440,
-      "2025-09-23": 1440,
-      "2025-09-22": 1440
+      "2025-09-23": 1440
     }
   },
   {
@@ -456,9 +456,9 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 39,
-    "timeDay": 58,
-    "timeWeek": 44,
+    "time": 40,
+    "timeDay": 64,
+    "timeWeek": 48,
     "timeMonth": 51,
     "timeYear": 46,
     "dailyMinutesDown": {}
@@ -480,7 +480,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-09-21": 253,
+      "2026-09-22": 249,
+      "2026-09-21": 1440,
       "2026-09-20": 1440,
       "2026-09-19": 1440,
       "2026-09-18": 1440,
@@ -843,8 +844,7 @@
       "2025-09-26": 1440,
       "2025-09-25": 1440,
       "2025-09-24": 1440,
-      "2025-09-23": 1440,
-      "2025-09-22": 1440
+      "2025-09-23": 1440
     }
   }
 ]
