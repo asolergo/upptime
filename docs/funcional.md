@@ -1,10 +1,10 @@
 # VulGest — Documento funcional
 
-- Versión documental: 1.0
-- Iteración: 001
+- Versión documental: 1.2
+- Iteración: 003
 - Fecha: 2026-10-29
-- Código de referencia: `consolidar_inventario.py`, versión `2026.10.28.24-clave-unica-bp-b-d`.
-- Base de esta versión: revisión estática del código y de la configuración; no se ha ejecutado la consolidación.
+- Código de referencia: `consolidar_inventario.py`, versión `2026.10.29.26-activa-columna-11-s`.
+- Base de esta versión: revisión del código, pruebas del cruce y contraste de solo lectura; no se ha ejecutado la consolidación completa.
 
 ## 1. Objetivo y alcance
 
@@ -88,12 +88,13 @@ Se busca `endpoint__product__main_provider` en el mapeo de partners, sin disting
 
 ### RF-06. Aplicación de baja
 
-En IDE00838 se forma exclusivamente la clave `Application - <BP>.<B>.<D>`, donde BP es plataforma, B es nombre y D es tipo.
+En IDE00838 sin cabecera se forma exclusivamente la clave `Application - <BP>.<D>.<B>`, usando los valores de esas posiciones, en ese orden. Sustituye a la composición anterior `BP.B.D`, que no se conserva como alias.
 
-- Con cabecera reconocida se usan `Nombre`, `Tipo`, `Activa` y `Plataforma`; si falta esta última, se usa la posición BP.
-- Sin cabecera reconocida se usan B (2), D (4), J (10, activa) y BP (68). Las filas cortas o sin plataforma, nombre o tipo se omiten.
+- Con cabecera reconocida se mantienen las asociaciones existentes: `Nombre` corresponde al componente B y `Tipo` al componente D. La clave es `Application - <Plataforma>.<Tipo>.<Nombre>`; si falta `Plataforma`, se usa la posición BP.
+- Sin cabecera reconocida se usan B (2), D (4), K (11, activa) y BP (68). La columna J (10) no interviene en la actividad. Las filas cortas o sin alguno de los tres componentes de la clave se omiten.
+- El usuario ha confirmado que el indicador de actividad está en la columna 11 del formato sin cabecera. Las denominaciones oficiales de B y D siguen pendientes de confirmación externa; no se alteran sus posiciones ni el orden BP.D.B.
 - La normalización aplica Unicode NFKC, elimina BOM, normaliza espacios y no distingue mayúsculas. No se buscan sufijos ni alias.
-- Se considera activa si el valor, recortado y en mayúsculas, es `S`, `SI`, `SÍ`, `Y`, `YES`, `TRUE` o `1`. Cualquier otro valor se interpreta como inactiva.
+- Se considera activa únicamente si el valor, recortado y en mayúsculas, es `S`. `N`, vacío y cualquier otro valor se interpretan como inactiva; `SI`, `SÍ`, `Y`, `YES`, `TRUE` y `1` ya no se aceptan como equivalentes de `S`. Esta interpretación también se aplica al campo `Activa` con cabecera reconocida.
 - Si hay varias filas para la misma clave, basta una activa para considerar activa la aplicación.
 
 | Resultado del cruce | `APLICACION_BAJA` |
@@ -124,10 +125,14 @@ En IDE00838 se forma exclusivamente la clave `Application - <BP>.<B>.<D>`, donde
 
 ## 6. Estado de validación
 
-La línea base describe el comportamiento inspeccionado, no una ejecución certificada con los datos actuales. `Inventario_validacion.txt` declara la versión `2026.10.28.21-ide00838-aliases`, anterior a la del código revisado; no valida la versión actual. En esta iteración no se ha regenerado ni validado el Excel existente. Las comprobaciones documentales y estáticas se detallan en el documento técnico.
+La iteración 003 verifica la actividad de la columna 11 y la aceptación exclusiva de `S` con 14 pruebas automatizadas satisfactorias. Se incluyen valores contradictorios en las columnas 10 y 11 y la comprobación de `APLICACION_BAJA` desde la carga del catálogo. Se mantienen la composición BP.D.B y la regla de salida: encontrada activa implica `NO`; encontrada inactiva, no encontrada o nombre vacío implican `SI`.
+
+El contraste adicional de solo lectura usa el catálogo actual y el detalle de una ejecución anterior; no certifica los inventarios actuales ni el Excel existente. `Inventario_validacion.txt` declara ahora `2026.10.29.25-clave-unica-bp-d-b`, anterior al código corregido; no valida la corrección de actividad. OpenCode no ha ejecutado una consolidación completa ni regenerado o validado el Excel en esta iteración. Se preservan los resultados preexistentes, incluidos los cambios locales del usuario. Las comprobaciones técnicas se detallan en el documento técnico.
 
 ## 7. Historial
 
 | Iteración | Fecha | Versión | Cambios e impacto |
 | --- | --- | --- | --- |
 | 001 | 2026-10-29 | 1.0 | Primera versión funcional basada en código y configuración. Se establecen las restricciones de Python y la entrega documental por iteración. Sin cambios en las reglas de negocio implementadas ni ejecución del consolidador. |
+| 002 | 2026-10-29 | 1.1 | Incorpora el análisis previo y cambia la clave del cruce IDE00838 a BP.D.B por petición del usuario; con cabecera, Plataforma.Tipo.Nombre. Se mantienen actividad, duplicados y APLICACION_BAJA. Pruebas satisfactorias y contraste de solo lectura; sin regenerar salidas. |
+| 003 | 2026-10-29 | 1.2 | Corrige la actividad del formato sin cabecera de la columna 10 a la 11 y acepta únicamente S como activa, según la regla confirmada por el usuario. Mantiene BP.D.B y la regla de APLICACION_BAJA. 14 pruebas satisfactorias y contraste de solo lectura; sin regenerar resultados existentes. |

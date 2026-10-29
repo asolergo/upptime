@@ -3,3 +3,5 @@
 
 # Excluir todos los archivos .log
 *.log
+
+*.xlsx

@@ -24,7 +24,7 @@ import tempfile
 from xml.sax.saxutils import escape, quoteattr
 
 
-SCRIPT_VERSION = "2026.10.28.24-clave-unica-bp-b-d"
+SCRIPT_VERSION = "2026.10.29.26-activa-columna-11-s"
 CONFIG_FILENAME = "inventario_config.json"
 PARTNERS_CONFIG_FILENAME = "partners_config.json"
 DATABASE_FILENAME = "inventario_consolidacion.sqlite"
@@ -489,15 +489,14 @@ def resolve_ide00838_application(application_name: Any, applications: dict[str, 
     if not normalized:
         return None, "", "nombre vacío"
     if normalized in applications:
-        return applications[normalized], normalized, "clave única BP.B.D"
+        return applications[normalized], normalized, "clave única BP.D.B"
     return None, normalized, "sin coincidencia"
 
 
 def load_ide00838_applications(path: Path) -> tuple[dict[str, bool], dict[str, int]]:
-    """Carga IDE00838 y compone una única clave: Application - <BP>.<B>.<D>."""
+    """Carga IDE00838 y compone una única clave: Application - <BP>.<D>.<B>."""
     stats = {"read": 0, "valid_names": 0, "duplicates": 0, "active": 0, "inactive": 0}
     applications: dict[str, bool] = {}
-    active_values = {"S", "SI", "SÍ", "Y", "YES", "TRUE", "1"}
 
     if path.suffix.casefold() == ".zip":
         with zipfile.ZipFile(path, "r") as archive:
@@ -539,11 +538,11 @@ def load_ide00838_applications(path: Path) -> tuple[dict[str, bool], dict[str, i
         rows = reader
         header_mode = "con cabecera"
     else:
-        # Formato oficial sin cabecera: B=Nombre, D=Tipo, J=Activa y BP=Plataforma.
-        # Python usa índices desde cero: B=1, D=3, J=9 y BP=67.
+        # Formato sin cabecera: clave BP.D.B y actividad en K (columna 11).
+        # Python usa índices desde cero: B=1, D=3, K=10 y BP=67.
         short_name_index = 1
         type_index = 3
-        active_index = 9
+        active_index = 10
         bp_index = 67
         rows = itertools.chain([first_row], reader)
         header_mode = "sin cabecera"
@@ -561,13 +560,13 @@ def load_ide00838_applications(path: Path) -> tuple[dict[str, bool], dict[str, i
             continue
 
         key = normalize_application_name(
-            f"Application - {bp_value}.{short_name}.{application_type}"
+            f"Application - {bp_value}.{application_type}.{short_name}"
         )
         if not key:
             continue
 
         stats["valid_names"] += 1
-        is_active = row[active_index].strip().upper() in active_values
+        is_active = row[active_index].strip().upper() == "S"
         if key in applications:
             stats["duplicates"] += 1
             applications[key] = applications[key] or is_active
@@ -578,7 +577,7 @@ def load_ide00838_applications(path: Path) -> tuple[dict[str, bool], dict[str, i
     stats["inactive"] = sum(1 for value in applications.values() if not value)
     print(
         f"  IDE00838 utilizado: {source_name} ({header_mode}, codificación {used_encoding}, "
-        f"clave única Application - <BP>.<B>.<D>; Activa=columna {active_index + 1})"
+        f"clave única Application - <BP>.<D>.<B>; Activa=columna {active_index + 1})"
     )
     return applications, stats
 
@@ -905,7 +904,7 @@ def write_ide00838_diagnostic_logs(
             else:
                 found, result = False, "SI"
                 unmatched += 1
-                reason = "No encontrada por clave única Application - <BP>.<B>.<D>"
+                reason = "No encontrada por clave única Application - <BP>.<D>.<B>"
             if result == "SI":
                 result_si += records
             else:
@@ -919,7 +918,7 @@ def write_ide00838_diagnostic_logs(
     summary_lines = [
         f"SCRIPT_VERSION={SCRIPT_VERSION}", f"FECHA={datetime.now().isoformat(timespec='seconds')}",
         f"IDE00838_FILE={ide00838_file}", f"OUTPUT_FILE={output_path}",
-        "COMPOSICION_IDE00838=clave única: Application - <BP>.<B>.<D>",
+        "COMPOSICION_IDE00838=clave única: Application - <BP>.<D>.<B>",
         "REGLA=No encontrada: SI | Encontrada activa: NO | Encontrada no activa: SI",
         f"CATALOGO_IDE00838={len(applications)}",
         f"APLICACIONES_DISTINTAS_INVENTARIO={total_distinct}", f"ENCONTRADAS={matched}",

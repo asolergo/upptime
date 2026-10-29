@@ -1,9 +1,9 @@
 # VulGest — Documento técnico
 
-- Versión documental: 1.0
-- Iteración: 001
+- Versión documental: 1.2
+- Iteración: 003
 - Fecha: 2026-10-29
-- Código de referencia: `consolidar_inventario.py`, `SCRIPT_VERSION=2026.10.28.24-clave-unica-bp-b-d`.
+- Código de referencia: `consolidar_inventario.py`, `SCRIPT_VERSION=2026.10.29.26-activa-columna-11-s`.
 
 ## 1. Arquitectura y componentes
 
@@ -12,6 +12,7 @@ Aplicación de consola en un único script Python. Usa CSV/ZIP como entradas, SQ
 | Ruta | Función |
 | --- | --- |
 | `consolidar_inventario.py` | Selección de fuentes, transformación, deduplicación, enriquecimiento, exportación y validación. |
+| `tests/test_ide00838.py` | Pruebas con `unittest` del cruce y de sus diagnósticos, con CSV/ZIP y SQLite en memoria y escrituras simuladas. |
 | `inventario_config.json` | Configuración principal junto al script. |
 | `partners_config.json` | Mapeo de proveedores a partners, junto al script. |
 | `datos/` | Ubicación de fuentes en la configuración actual; también contiene Excel auxiliares que el script no consume. |
@@ -21,7 +22,7 @@ Aplicación de consola en un único script Python. Usa CSV/ZIP como entradas, SQ
 | `AGENTS.md` | Instrucciones persistentes de OpenCode para todo el repositorio. |
 | `docs/funcional.md`, `docs/tecnico.md` | Documentos vivos obligatorios por iteración. |
 
-En la inspección inicial también estaban `aplicar_parche_v22.py` y `consolidar_inventario.py.bak_v21`. Ambos dejaron de estar presentes durante esta iteración, sin intervención de OpenCode. No se han restaurado. El parche inspeccionado escribía en el consolidador y en su copia histórica; no era parte del flujo normal.
+En la inspección inicial de la iteración 001 también estaban `aplicar_parche_v22.py` y `consolidar_inventario.py.bak_v21`. Ambos dejaron de estar presentes durante aquella iteración, sin intervención de OpenCode. No se han restaurado. El parche inspeccionado escribía en el consolidador y en su copia histórica; no era parte del flujo normal.
 
 ## 2. Entorno y dependencias
 
@@ -54,7 +55,7 @@ Ejecución habitual desde PowerShell, una vez revisada la configuración y cerra
 python .\consolidar_inventario.py
 ```
 
-Este comando procesa las fuentes reales y reemplaza resultados; no se ha ejecutado en esta iteración documental. No necesita una instalación previa mediante gestores de paquetes.
+Este comando procesa las fuentes reales y reemplaza resultados; OpenCode no lo ha ejecutado en las iteraciones 001, 002 y 003. Existen resultados de ejecuciones ajenas a estas comprobaciones. No necesita una instalación previa mediante gestores de paquetes.
 
 ## 4. Flujo de procesamiento
 
@@ -102,6 +103,15 @@ Se añaden siete columnas:
 
 Las reglas de estos campos están descritas en `docs/funcional.md`.
 
+### Cruce IDE00838
+
+- `load_ide00838_applications()` compone `Application - <BP>.<D>.<B>` y normaliza la clave completa. Los índices sin cabecera son BP=67, D=3, B=1 y K=10 (actividad, columna 11), contando desde cero. J=9 ya no se utiliza para determinar la actividad.
+- Con cabecera se conservan los índices obtenidos de `Plataforma`, `Tipo`, `Nombre` y `Activa`; la composición pasa a `Plataforma.Tipo.Nombre`. Se mantiene el recurso a BP=67 cuando falta `Plataforma`.
+- `resolve_ide00838_application()` no admite la composición anterior como alias y devuelve el método `clave única BP.D.B` para las coincidencias.
+- La consola y los logs nuevos de `write_ide00838_diagnostic_logs()` identifican la composición BP.D.B; los logs preexistentes se conservan sin cambios.
+- La actividad se determina con `row[active_index].strip().upper() == "S"`, tanto con cabecera como sin ella. Se eliminó la aceptación de otros valores afirmativos. La consola informa la posición utilizada: 11 en el formato sin cabecera, o la posición detectada de `Activa` con cabecera reconocida.
+- No cambian la normalización, las reglas de duplicados ni `prepare_row()` para `APLICACION_BAJA`. El usuario confirmó K como indicador de actividad en el formato sin cabecera; las denominaciones oficiales de B/D siguen pendientes de confirmación externa.
+
 ### SQLite
 
 - Archivo: `inventario_consolidacion.sqlite` junto al Excel de salida. Si existe, `create_database()` lo elimina antes de crear la nueva base; no se reutiliza como histórico.
@@ -143,6 +153,8 @@ Estas son instrucciones persistentes de comportamiento del agente, no un bloqueo
 
 ## 8. Verificación de esta iteración
 
+### Evidencia histórica: iteración 001
+
 - Revisión estática del consolidador completo, del parche histórico, de los JSON de configuración y del informe de validación existente.
 - Comprobación estática satisfactoria de sintaxis e importaciones del consolidador mediante `ast` y `compile`, usando Python 3.11.6 aislado, sin paquetes de sitio y sin ejecutar el script; comprobación satisfactoria de validez de los dos JSON de configuración.
 - Un primer intento de comprobación se interrumpió al no encontrar el parche histórico, que había desaparecido tras la revisión inicial. La comprobación se repitió sobre el consolidador presente, sin restaurar archivos ajenos.
@@ -150,8 +162,27 @@ Estas son instrucciones persistentes de comportamiento del agente, no un bloqueo
 - No se han ejecutado pruebas funcionales, el parche ni una consolidación completa. No se ha abierto o regenerado `Inventario.xlsx`, ni modificado los datos o los scripts.
 - La evidencia preexistente `Inventario_validacion.txt` declara `2026.10.28.21-ide00838-aliases`; no se atribuyen sus resultados al código actual.
 
+### Iteración 002: composición BP.D.B
+
+- Se ejecutó satisfactoriamente `python -I -S -B -m unittest discover -s tests -v`: 11 pruebas, solo biblioteca estándar, sin paquetes de sitio ni escritura de bytecode.
+- Cobertura: composición sin cabecera, cabeceras reordenadas, ausencia de Plataforma con alternativa BP, rechazo del orden anterior, normalización, descripción de coincidencia, duplicados en ambos órdenes, estados de actividad, filas incompletas, ZIP, APLICACION_BAJA y logs de resumen/detalle.
+- Las pruebas no invocan `main()`: usan CSV/ZIP y SQLite en memoria, lecturas simuladas para los CSV sintéticos y escrituras de diagnósticos simuladas.
+- Se ejecutó un contraste adicional de solo lectura del catálogo real con los nombres del último detalle histórico. Confirma coincidencias con la composición implementada; no es una consolidación ni una validación del Excel o de los inventarios actuales. No se incorporan datos de inventario a esta documentación.
+- Se revisaron ambos documentos y su historial común. No se ejecutaron parches históricos ni se regeneraron o sobrescribieron Excel, datos, logs o informes existentes.
+
+### Iteración 003: actividad en columna 11 y solo S
+
+- Se ejecutó satisfactoriamente `python -I -S -B -m unittest discover -s tests -v`: 14 pruebas con biblioteca estándar, sin paquetes de sitio ni escritura de bytecode.
+- Se actualizaron los datos sintéticos para situar actividad en K=10 y se añadieron pruebas con valores opuestos en J/K, valores no S con cabecera y la cadena completa carga del catálogo → `prepare_row()` → `APLICACION_BAJA`. Se mantienen las pruebas de BP.D.B, ZIP, duplicados y diagnósticos.
+- El contraste adicional de solo lectura usa `load_ide00838_applications()` y `resolve_ide00838_application()` corregidos sobre el catálogo actual y el detalle histórico indicado por el usuario. No invoca `main()`, no genera salidas y no certifica una nueva consolidación.
+- El informe preexistente inspeccionado declara `2026.10.29.25-clave-unica-bp-d-b`; las referencias anteriores a `2026.10.28.21-ide00838-aliases` son evidencia histórica de la iteración 001, no el estado actual del informe.
+- Se preservan los cambios locales preexistentes del usuario en Excel e informe. Las pruebas usan escrituras simuladas y SQLite en memoria; no se regeneran Excel, datos, logs ni informes.
+- Comprobaciones satisfactorias de sintaxis, existencia e historial común de los dos documentos y `git diff --check`. Los SHA-256 anteriores y posteriores coinciden para Excel, informe, catálogo y los dos archivos de diagnóstico indicados por el usuario.
+
 ## 9. Historial
 
 | Iteración | Fecha | Versión | Cambios e impacto |
 | --- | --- | --- | --- |
 | 001 | 2026-10-29 | 1.0 | Primera versión técnica y creación de `AGENTS.md` con restricción a biblioteca estándar y mantenimiento de dos documentos por iteración. Comprobaciones estáticas y documentales, sin cambios en scripts, configuración de negocio ni resultados. |
+| 002 | 2026-10-29 | 1.1 | Incorpora el análisis previo, actualiza composición, versión y diagnósticos a BP.D.B y añade 11 pruebas con unittest, todas satisfactorias. Contraste adicional de solo lectura. Sin nuevas dependencias, cambios de configuración ni regeneración de resultados. |
+| 003 | 2026-10-29 | 1.2 | Actualiza versión, índice de actividad a K=10 y comparación exclusiva con S. Amplía la suite a 14 pruebas satisfactorias y realiza contraste de solo lectura. Mantiene BP.D.B, formatos y dependencias; sin regenerar ni sobrescribir resultados existentes. |
