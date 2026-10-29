@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import io
 import itertools
+import logging
 import unicodedata
 import json
 import os
@@ -24,7 +25,7 @@ import tempfile
 from xml.sax.saxutils import escape, quoteattr
 
 
-SCRIPT_VERSION = "2026.10.29.26-activa-columna-11-s"
+SCRIPT_VERSION = "2026.10.29.29-logging-detallado"
 CONFIG_FILENAME = "inventario_config.json"
 PARTNERS_CONFIG_FILENAME = "partners_config.json"
 DATABASE_FILENAME = "inventario_consolidacion.sqlite"
@@ -589,16 +590,20 @@ def select_agent_execution_file(input_folder: Path) -> Path:
 
 
 def create_agent_table(connection: sqlite3.Connection) -> None:
-    connection.execute("CREATE TABLE agent_executions (finding_id TEXT PRIMARY KEY, resolution TEXT, execution_timestamp TEXT NOT NULL)")
+    connection.execute(
+        "CREATE TABLE agent_executions (finding_id TEXT PRIMARY KEY, resolution TEXT, "
+        "execution_timestamp TEXT NOT NULL, detail_json TEXT NOT NULL)"
+    )
     connection.commit()
 
 
 def process_agent_execution_file(connection: sqlite3.Connection, path: Path) -> dict[str, int]:
     stats = {"read": 0, "completed": 0, "json_valid": 0, "json_invalid": 0, "findings": 0, "upserts": 0}
-    sql = ("INSERT INTO agent_executions (finding_id, resolution, execution_timestamp) VALUES (?, ?, ?) "
-           "ON CONFLICT(finding_id) DO UPDATE SET resolution=excluded.resolution, execution_timestamp=excluded.execution_timestamp "
+    sql = ("INSERT INTO agent_executions (finding_id, resolution, execution_timestamp, detail_json) VALUES (?, ?, ?, ?) "
+           "ON CONFLICT(finding_id) DO UPDATE SET resolution=excluded.resolution, "
+           "execution_timestamp=excluded.execution_timestamp, detail_json=excluded.detail_json "
            "WHERE excluded.execution_timestamp > agent_executions.execution_timestamp")
-    batch: list[tuple[str, str, str]] = []
+    batch: list[tuple[str, str, str, str]] = []
     with open_csv_stream(path) as (stream, source_name):
         print(f"  CSV de ejecuciones utilizado: {source_name}")
         reader = csv.DictReader(stream, delimiter=",", quotechar='"', doublequote=True)
@@ -635,7 +640,17 @@ def process_agent_execution_file(connection: sqlite3.Connection, path: Path) -> 
                     if not finding_id:
                         continue
                     resolution = str(finding.get("resolution", "") or "").strip()
-                    batch.append((finding_id, resolution, timestamp_stored))
+                    detail = {
+                        "execution": {key: row.get(key, "") for key in (
+                            "id", "agent_name", "user_id", "action", "timestamp", "status",
+                            "duration_ms", "repository",
+                        )},
+                        "framework": details.get("framework", "") if isinstance(details, dict) else "",
+                        "project": details.get("project", "") if isinstance(details, dict) else "",
+                        "finding": finding,
+                    }
+                    batch.append((finding_id, resolution, timestamp_stored,
+                                  json.dumps(detail, ensure_ascii=False, separators=(",", ":"))))
                     stats["findings"] += 1
                     if len(batch) >= BATCH_SIZE:
                         before = connection.total_changes
@@ -666,6 +681,56 @@ def enrich_inventory_with_agent_data(connection: sqlite3.Connection) -> tuple[in
     connection.commit()
     matched = connection.execute("SELECT COUNT(*) FROM inventario WHERE \"Ejecución_agente\"='SI'").fetchone()[0]
     return total_agents, matched
+
+
+def write_unmatched_agent_findings_csv(
+    connection: sqlite3.Connection, output_path: Path
+) -> tuple[Path, int]:
+    """Exporta findings de agente que no cruzan con id del inventario."""
+    # La expresión coincide con la condición de NOT EXISTS de abajo. Sin este
+    # índice SQLite puede recorrer todo el inventario por cada finding agente.
+    connection.execute(
+        'CREATE INDEX IF NOT EXISTS idx_inventario_id_text '
+        'ON inventario(CAST("id" AS TEXT))'
+    )
+    logs_dir = output_path.parent / "logs"
+    logs_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    detail_path = logs_dir / f"ejecuciones_agente_sin_inventario_{timestamp}.csv"
+    latest_path = logs_dir / "ejecuciones_agente_sin_inventario_ULTIMO.csv"
+    query = """SELECT a.finding_id, a.resolution, a.execution_timestamp, a.detail_json
+               FROM agent_executions a
+               WHERE NOT EXISTS (
+                   SELECT 1 FROM inventario i
+                   WHERE a.finding_id=CAST(i."id" AS TEXT)
+               )
+               ORDER BY a.finding_id"""
+    count = 0
+    with detail_path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.writer(handle, delimiter=";")
+        writer.writerow([
+            "finding_id", "resolution", "timestamp", "execution_id", "agent_name",
+            "action", "status", "duration_ms", "repository", "framework", "project",
+            "severity", "product", "summary", "detalle_finding_json",
+        ])
+        for finding_id, resolution, execution_timestamp, detail_text in connection.execute(query):
+            detail = json.loads(detail_text)
+            execution = detail.get("execution", {})
+            finding = detail.get("finding", {})
+            writer.writerow([
+                finding_id, resolution, execution_timestamp,
+                execution.get("id", ""), execution.get("agent_name", ""),
+                execution.get("action", ""), execution.get("status", ""),
+                execution.get("duration_ms", ""), execution.get("repository", ""),
+                detail.get("framework", ""),
+                finding.get("project") or detail.get("project", ""),
+                finding.get("severity", ""), finding.get("product", ""),
+                finding.get("summary", ""),
+                json.dumps(finding, ensure_ascii=False, separators=(",", ":")),
+            ])
+            count += 1
+    shutil.copyfile(detail_path, latest_path)
+    return detail_path, count
 
 
 def estimate_uncompressed_input_size(selected: list[tuple[str, Path]]) -> int:
@@ -1013,6 +1078,14 @@ def main() -> int:
             ]) + "\n",
             encoding="utf-8",
         )
+        logger = logging.getLogger("vulgest.consolidacion")
+        logger.setLevel(logging.DEBUG)
+        logger.handlers.clear()
+        handler = logging.FileHandler(startup_log_path, mode="a", encoding="utf-8")
+        handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s", "%Y-%m-%d %H:%M:%S"))
+        logger.addHandler(handler)
+        logger.propagate = False
+        logger.info("Ejecución iniciada; versión=%s", SCRIPT_VERSION)
 
         print(f"VERSIÓN DEL SCRIPT: {SCRIPT_VERSION}")
         print(f"LOG DE EJECUCIÓN CREADO: {startup_log_path}")
@@ -1034,6 +1107,7 @@ def main() -> int:
         selected = select_latest_files(input_folder, config["prefixes"])
         agent_file = select_agent_execution_file(input_folder)
         ide00838_file = select_ide00838_file(input_folder)
+        logger.info("Fuentes seleccionadas: %s; agente=%s; IDE00838=%s", selected, agent_file, ide00838_file)
         print("\nARCHIVOS SELECCIONADOS")
         for prefix, path in selected:
             modified = datetime.fromtimestamp(path.stat().st_mtime).strftime("%d/%m/%Y %H:%M:%S")
@@ -1044,7 +1118,9 @@ def main() -> int:
         print(f"  IDE00838: {ide00838_file} (modificado {ide_modified})")
 
         print("\nPROCESAMIENTO DE IDE00838")
+        stage_started = time.perf_counter()
         applications, ide_stats = load_ide00838_applications(ide00838_file)
+        logger.info("IDE00838 cargado: %s", {"estadisticas": ide_stats, "aplicaciones_unicas": len(applications), "duracion_segundos": round(time.perf_counter() - stage_started, 3)})
         print(
             f"  Finalizado: {ide_stats['read']:,} registros | {len(applications):,} aplicaciones únicas | "
             f"{ide_stats['active']:,} activas | {ide_stats['inactive']:,} no activas"
@@ -1056,15 +1132,20 @@ def main() -> int:
         db_path = output_path.parent / DATABASE_FILENAME
         connection, insert_sql = create_database(db_path)
         create_agent_table(connection)
+        logger.info("Base SQLite temporal creada: %s", db_path)
 
         print("\nPROCESAMIENTO DE EJECUCIONES DE AGENTE")
+        stage_started = time.perf_counter()
         agent_stats = process_agent_execution_file(connection, agent_file)
+        logger.info("Ejecuciones de agente procesadas: %s; duracion_segundos=%.3f", agent_stats, time.perf_counter() - stage_started)
         print(f"  Finalizado: {agent_stats['read']:,} registros | {agent_stats['completed']:,} completed | {agent_stats['findings']:,} findings extraídos | {agent_stats['json_invalid']:,} JSON inválidos")
 
         totals = {"read": 0, "valid": 0, "discarded": 0, "changed": 0}
         print("\nPROCESAMIENTO")
         for prefix, path in selected:
             print(f"Procesando [{prefix}]: {path}")
+            stage_started = time.perf_counter()
+            logger.info("Inicio de inventario prefijo=%s archivo=%s", prefix, path)
             file_stats = process_file(connection, insert_sql, path, config["_fw_agents_normalized"], partners, applications)
             for key in totals:
                 totals[key] += file_stats[key]
@@ -1072,6 +1153,7 @@ def main() -> int:
                 f"  Finalizado: {file_stats['read']:,} leídos | {file_stats['valid']:,} UUID válidos | "
                 f"{file_stats['discarded']:,} descartados | {file_stats['changed']:,} inserciones/actualizaciones"
             )
+            logger.info("Inventario finalizado prefijo=%s estadisticas=%s duracion_segundos=%.3f", prefix, file_stats, time.perf_counter() - stage_started)
 
         unique_count = connection.execute("SELECT COUNT(*) FROM inventario").fetchone()[0]
         baja_si = connection.execute("SELECT COUNT(*) FROM inventario WHERE \"APLICACION_BAJA\" = 'SI'").fetchone()[0]
@@ -1093,14 +1175,23 @@ def main() -> int:
         ide_log_path, ide_detail_path = write_ide00838_diagnostic_logs(
             connection, applications, ide00838_file, output_path
         )
+        logger.info("Diagnósticos IDE00838 escritos: resumen=%s detalle=%s", ide_log_path, ide_detail_path)
         print(f"  Log resumen del cruce: {ide_log_path}")
         print(f"  Log detallado del cruce: {ide_detail_path}")
         unique_agent_findings, matched_agent_findings = enrich_inventory_with_agent_data(connection)
+        unmatched_agent_csv, unmatched_agent_count = write_unmatched_agent_findings_csv(
+            connection, output_path
+        )
+        logger.info("Cruce de agentes finalizado: findings_unicos=%s coincidentes=%s no_coincidentes=%s csv=%s", unique_agent_findings, matched_agent_findings, unmatched_agent_count, unmatched_agent_csv)
         print("\nCRUCE CON EJECUCIONES DE AGENTE")
         print(f"  Findings únicos en ejecuciones completed: {unique_agent_findings:,}")
         print(f"  Findings del inventario con ejecución: {matched_agent_findings:,}")
+        print(f"  Findings de agente sin coincidencia: {unmatched_agent_count:,}")
+        print(f"  CSV detallado de no coincidentes: {unmatched_agent_csv}")
         print("\nGENERACIÓN DE EXCEL")
         print(f"  UUID únicos finales: {unique_count:,}")
+        stage_started = time.perf_counter()
+        logger.info("Inicio de generación XLSX: destino=%s filas=%s", output_path, unique_count)
         written = write_excel(
             connection,
             output_path,
@@ -1109,6 +1200,7 @@ def main() -> int:
             unique_count,
         )
         verify_final_excel(output_path)
+        logger.info("XLSX generado y validado: filas=%s bytes=%s duracion_segundos=%.3f", written, output_path.stat().st_size, time.perf_counter() - stage_started)
         final_stat = output_path.stat()
         validation_path = output_path.with_name(output_path.stem + "_validacion.txt")
         validation_path.write_text(
@@ -1129,7 +1221,9 @@ def main() -> int:
             startup_log.write("ESTADO=FINALIZADO_CORRECTAMENTE\n")
             startup_log.write(f"LOG_RESUMEN_IDE00838={ide_log_path}\n")
             startup_log.write(f"LOG_DETALLE_IDE00838={ide_detail_path}\n")
+            startup_log.write(f"CSV_AGENTES_SIN_INVENTARIO={unmatched_agent_csv}\n")
         success = True
+        logger.info("Ejecución completada correctamente; duración_total_segundos=%.3f", time.perf_counter() - started)
 
         elapsed = time.perf_counter() - started
         print("\nRESUMEN FINAL")
@@ -1152,12 +1246,18 @@ def main() -> int:
         return 0
 
     except ConsolidationError as exc:
+        if 'logger' in locals():
+            logger.exception("Error de consolidación")
         print(f"\nERROR: {exc}", file=sys.stderr)
         return 1
     except KeyboardInterrupt:
+        if 'logger' in locals():
+            logger.warning("Ejecución cancelada por el usuario")
         print("\nERROR: proceso cancelado por el usuario.", file=sys.stderr)
         return 130
     except Exception as exc:
+        if 'logger' in locals():
+            logger.exception("Error inesperado")
         print(f"\nERROR INESPERADO: {type(exc).__name__}: {exc}", file=sys.stderr)
         return 1
     finally:
@@ -1166,6 +1266,11 @@ def main() -> int:
                 connection.close()
             except sqlite3.Error:
                 pass
+        if 'logger' in locals():
+            logger.info("Limpieza finalizada; éxito=%s", success)
+            for handler in logger.handlers[:]:
+                handler.close()
+                logger.removeHandler(handler)
         if db_path is not None and config is not None and not config.get("keep_database", False):
             remove_database_files(db_path)
         if not success and config is not None:

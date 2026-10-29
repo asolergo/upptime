@@ -5,3 +5,7 @@
 *.log
 
 *.xlsx
+
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal    

@@ -1,9 +1,9 @@
 # VulGest — Documento técnico
 
-- Versión documental: 1.2
-- Iteración: 003
+- Versión documental: 1.6
+- Iteración: 007
 - Fecha: 2026-10-29
-- Código de referencia: `consolidar_inventario.py`, `SCRIPT_VERSION=2026.10.29.26-activa-columna-11-s`.
+- Código de referencia: `consolidar_inventario.py`, `SCRIPT_VERSION=2026.10.29.29-logging-detallado`.
 
 ## 1. Arquitectura y componentes
 
@@ -13,12 +13,14 @@ Aplicación de consola en un único script Python. Usa CSV/ZIP como entradas, SQ
 | --- | --- |
 | `consolidar_inventario.py` | Selección de fuentes, transformación, deduplicación, enriquecimiento, exportación y validación. |
 | `tests/test_ide00838.py` | Pruebas con `unittest` del cruce y de sus diagnósticos, con CSV/ZIP y SQLite en memoria y escrituras simuladas. |
+| `tests/test_agent_export.py` | Prueba sintética de deduplicación por finding y exportación de hallazgos de agente sin coincidencia. |
 | `inventario_config.json` | Configuración principal junto al script. |
 | `partners_config.json` | Mapeo de proveedores a partners, junto al script. |
 | `datos/` | Ubicación de fuentes en la configuración actual; también contiene Excel auxiliares que el script no consume. |
 | `Inventario.xlsx` | Salida configurada, preexistente a esta iteración. |
-| `Inventario_validacion.txt` | Informe de una ejecución previa; declara una versión anterior del script. |
-| `logs/` | Diagnósticos de ejecución y del cruce IDE00838. |
+| `Inventario_validacion.txt` | Informe preexistente; no se ha regenerado en la iteración 005. |
+| `ejecuciones_agente_sin_inventario_20261029.csv` | Artefacto puntual histórico de la iteración 004; la salida automática actual se escribe en `logs/`. |
+| `logs/` | Diagnósticos de ejecución y de los cruces IDE00838 y de agentes. |
 | `AGENTS.md` | Instrucciones persistentes de OpenCode para todo el repositorio. |
 | `docs/funcional.md`, `docs/tecnico.md` | Documentos vivos obligatorios por iteración. |
 
@@ -55,12 +57,12 @@ Ejecución habitual desde PowerShell, una vez revisada la configuración y cerra
 python .\consolidar_inventario.py
 ```
 
-Este comando procesa las fuentes reales y reemplaza resultados; OpenCode no lo ha ejecutado en las iteraciones 001, 002 y 003. Existen resultados de ejecuciones ajenas a estas comprobaciones. No necesita una instalación previa mediante gestores de paquetes.
+Este comando procesa las fuentes reales y reemplaza resultados; OpenCode no lo ha ejecutado en las iteraciones 001 a 004. Existen resultados de ejecuciones ajenas a estas comprobaciones. No necesita una instalación previa mediante gestores de paquetes.
 
 ## 4. Flujo de procesamiento
 
 1. `load_config()` y `load_partners_config()`: lectura UTF-8 con BOM opcional y validaciones.
-2. Resolución de rutas y creación de la carpeta de salida y `logs/`; escritura inicial de `ejecucion_inventario_ULTIMA.log`.
+2. Resolución de rutas y creación de la carpeta de salida y `logs/`; escritura inicial y configuración del logger estándar hacia `ejecucion_inventario_ULTIMA.log`.
 3. `select_latest_files()`, `select_agent_execution_file()` y `select_ide00838_file()`: selección de archivos por modificación y nombre.
 4. `load_ide00838_applications()`: carga completa del catálogo en memoria, detección de codificación y construcción de un diccionario normalizado de aplicaciones.
 5. Estimación del tamaño descomprimido de los inventarios y control de espacio libre: mínimo de `max(200 MiB, 1,5 × tamaño estimado)`.
@@ -118,7 +120,7 @@ Las reglas de estos campos están descritas en `docs/funcional.md`.
 - PRAGMA: `journal_mode=WAL`, `synchronous=NORMAL`.
 - Tabla `inventario`: 34 campos de salida más `_sort_key TEXT NOT NULL`; `finding_uuid TEXT PRIMARY KEY` y `custom_risk REAL`; los demás campos no tienen tipo declarado.
 - UPSERT: actualiza todos los campos salvo el UUID únicamente si `excluded._sort_key > inventario._sort_key`.
-- Tabla `agent_executions`: `finding_id TEXT PRIMARY KEY`, `resolution TEXT`, `execution_timestamp TEXT NOT NULL`; actualiza solo con timestamp estrictamente posterior.
+- Tabla `agent_executions`: `finding_id TEXT PRIMARY KEY`, `resolution TEXT`, `execution_timestamp TEXT NOT NULL`, `detail_json TEXT NOT NULL`; conserva el contexto de la ejecución y el objeto finding del registro más reciente. Actualiza todos los campos asociados solo con timestamp estrictamente posterior.
 - Las fechas válidas se almacenan con `isoformat(timespec="microseconds")`; las comparaciones se realizan sobre estas cadenas normalizadas.
 - Lotes de 5.000 registros con commits; progreso cada 25.000 registros. Las estadísticas de cambios incluyen tanto inserciones como actualizaciones, no equivalen a UUID únicos.
 
@@ -131,11 +133,22 @@ Las reglas de estos campos están descritas en `docs/funcional.md`.
 - El XLSX temporal se denomina `<nombre>.tmp.xlsx`; se verifica la integridad ZIP, las cabeceras derivadas exigidas y el rango de tabla antes de reemplazar el destino.
 - La validación final comprueba cabeceras y definición de tabla. No es una certificación completa del esquema Open XML ni una apertura real en Excel.
 
+### CSV automático de agentes sin inventario (iteración 005)
+
+- El script escribe `logs/ejecuciones_agente_sin_inventario_<AAAAMMDD_HHMMSS>.csv` y copia `logs/ejecuciones_agente_sin_inventario_ULTIMO.csv` durante el cruce de `agent_executions` con `inventario`, antes de la exportación XLSX.
+- UTF-8 con BOM, separador `;`, cabecera, 15 columnas: `finding_id`, `resolution`, `timestamp`, `execution_id`, `agent_name`, `action`, `status`, `duration_ms`, `repository`, `framework`, `project`, `severity`, `product`, `summary`, `detalle_finding_json`.
+- Se exporta una fila por finding único cuya clave no coincide con `CAST(inventario.id AS TEXT)`. La tabla agente retiene `detail_json`; el upsert guarda en conjunto los detalles del registro con timestamp estrictamente mayor, conservando el primero en empate como antes.
+- Antes de ejecutar el anti-join se crea `idx_inventario_id_text` sobre `inventario(CAST("id" AS TEXT))`. Este índice de la base temporal evita escanear toda la tabla de inventario para cada finding sin coincidencia; no cambia las filas exportadas.
+- `timestamp` es ISO con microsegundos; `execution_id` es el `id` de la fila de ejecución, no `finding_id`. `project` prioriza el campo del finding y usa el valor del detalle de ejecución como alternativa. `detalle_finding_json` contiene el objeto íntegro del finding seleccionado.
+- La consola informa cantidad de no coincidentes y ruta fechada; el log de ejecución registra `CSV_AGENTES_SIN_INVENTARIO`. La copia `ULTIMO` se actualiza con la salida de la ejecución actual. El directorio de logs contiene datos del proyecto.
+- La extracción puntual de iteración 004, en la raíz, es un artefacto distinto del nuevo CSV automático. La implementación automática no ha sido ejecutada sobre datos reales en esta iteración.
+
 ## 6. Diagnósticos, errores y limitaciones
 
 - Salida normal: código `0`; error controlado o inesperado: `1`; interrupción de teclado: `130`.
-- Los errores se presentan en consola; el log de inicio solo se marca como finalizado correctamente tras el éxito. No hay escritura explícita de un estado final de fallo.
-- El resumen IDE00838 y su detalle incluyen nombres de aplicaciones: tratar los logs como datos del proyecto, no como documentación pública.
+- El logger estándar escribe eventos con fecha/hora y nivel en `ejecucion_inventario_ULTIMA.log`: fuentes seleccionadas, estadísticas y duración de procesamiento por etapa, rutas diagnósticas, resultados de cruces, generación y validación XLSX, limpieza y errores (incluido traceback para excepciones). Se inicia una nueva versión `ULTIMA` por ejecución; no se mantienen logs fechados de ejecución.
+- Los errores se presentan también en consola. Si el fallo ocurre antes de configurar el logger (por ejemplo, al cargar configuración o crear logs), solo puede quedar disponible el mensaje de consola y el log de inicio podría no existir o estar incompleto.
+- El resumen IDE00838 y los CSV de detalle de ambos cruces contienen datos del proyecto: tratar los logs como datos internos, no como documentación pública.
 - El informe de validación registra versión, ruta, tamaño, 34 columnas, AH y cabecera final. No contiene una auditoría completa de los valores de todas las celdas.
 - La lectura de inventarios y ejecuciones es en streaming, pero IDE00838 se carga completo y ciertas validaciones leen el XML de la hoja completo en memoria.
 - La estimación de disco no incluye todos los auxiliares, logs y necesidades reales de SQLite; es una comprobación preventiva, no una garantía de capacidad.
@@ -143,7 +156,7 @@ Las reglas de estos campos están descritas en `docs/funcional.md`.
 - El reemplazo del Excel no hace transaccional todo el proceso: una validación o escritura posterior puede fallar después de reemplazarlo.
 - No ejecutar consolidaciones simultáneas sobre la misma salida: los nombres de la base y del XLSX temporal son compartidos.
 - El parche v22 inspeccionado era anterior al código actual y escribía archivos al ejecutarse/importarse; no se ha ejecutado.
-- `.gitignore` excluye `*.csv` y `*.log`, pero no todos los datos, ZIP, Excel o informes TXT. Revisar el contenido antes de publicar o versionar archivos. No se ha cambiado esta política.
+- `.gitignore` excluye actualmente `*.csv`, `*.log` y `*.xlsx`, pero no todos los datos, ZIP o informes TXT. Revisar el contenido antes de publicar o versionar archivos. La regla XLSX es un cambio local preexistente a la iteración 004; no se ha modificado esta política en esta iteración.
 
 ## 7. Política de OpenCode y mantenimiento documental
 
@@ -179,6 +192,27 @@ Estas son instrucciones persistentes de comportamiento del agente, no un bloqueo
 - Se preservan los cambios locales preexistentes del usuario en Excel e informe. Las pruebas usan escrituras simuladas y SQLite en memoria; no se regeneran Excel, datos, logs ni informes.
 - Comprobaciones satisfactorias de sintaxis, existencia e historial común de los dos documentos y `git diff --check`. Los SHA-256 anteriores y posteriores coinciden para Excel, informe, catálogo y los dos archivos de diagnóstico indicados por el usuario.
 
+### Verificación de la iteración 004: CSV de agentes sin inventario
+
+- Extracción completada usando exclusivamente biblioteca estándar con Python aislado, sin paquetes de sitio ni bytecode. Se leen el CSV de agentes seleccionado y el Excel existente; no se invoca `main()` ni se leen los CSV de inventario para reconstruirlo.
+- Resultado: 3.765 findings únicos de agente, 3.706 filas coincidentes y 3.706 identificadores coincidentes distintos; 59 identificadores sin coincidencia. El indicador `Ejecución_agente` coincide con el cruce por `id` en todas las filas del libro inspeccionado.
+- Relectura satisfactoria del CSV entregado: 59 filas, 18 columnas, sin identificadores duplicados, conjunto exacto de no coincidentes, fecha y resolución iguales a la tabla de referencia del consolidador, y JSON de detalle válido para cada finding.
+- Comparación SHA-256 anterior/posterior satisfactoria para `Inventario.xlsx`, CSV de agentes utilizado, `Inventario_validacion.txt`, `consolidar_inventario.py` e `inventario_config.json`. No se sobrescriben esos archivos, los logs, otros resultados ni fuentes.
+- `python -I -S -B -m unittest discover -s tests -v`: 14 pruebas existentes satisfactorias. Su alcance sigue siendo IDE00838; el CSV se verifica con las comprobaciones específicas de la extracción, no con nuevos tests permanentes.
+- No se abre el libro en Excel, no se realiza una nueva consolidación ni una certificación completa de sus demás campos. El informe preexistente declara ahora la versión 26; las referencias anteriores a la versión 25 describen la evidencia histórica de la iteración 003.
+
+### Verificación de la iteración 005: exportación integrada
+
+- `python -I -S -B -m unittest discover -s tests -v` ejecutado con biblioteca estándar. La prueba nueva sintética comprueba cruce, finding no coincidente, metadatos de agente, detalle JSON, selección del timestamp más reciente y copia `ULTIMO`; sin ejecutar `main()` ni escribir fuera del directorio temporal de pruebas.
+- Comprobación de sintaxis del consolidador y `git diff --check` satisfactorios.
+- No se ejecuta consolidación completa; no se regenera ni modifica `Inventario.xlsx`, el CSV puntual histórico, las fuentes, logs preexistentes o el informe de validación. La salida automática real queda pendiente de la siguiente ejecución normal del usuario.
+
+### Verificación de la iteración 006: optimización del cruce de agentes
+
+- El anti-join de exportación crea un índice SQLite de expresión sobre `CAST(id AS TEXT)`, coincidente con la expresión de búsqueda; queda acotado a la base temporal de la ejecución.
+- La prueba sintética verifica la creación del índice y conserva la comprobación de contenido del CSV, exclusión por ID, detalle y selección de la ejecución más reciente.
+- Se ejecutan las pruebas automatizadas de biblioteca estándar y comprobaciones estáticas. No se ejecuta `main()` ni se modifica el Excel, logs o fuentes existentes.
+
 ## 9. Historial
 
 | Iteración | Fecha | Versión | Cambios e impacto |
@@ -186,3 +220,7 @@ Estas son instrucciones persistentes de comportamiento del agente, no un bloqueo
 | 001 | 2026-10-29 | 1.0 | Primera versión técnica y creación de `AGENTS.md` con restricción a biblioteca estándar y mantenimiento de dos documentos por iteración. Comprobaciones estáticas y documentales, sin cambios en scripts, configuración de negocio ni resultados. |
 | 002 | 2026-10-29 | 1.1 | Incorpora el análisis previo, actualiza composición, versión y diagnósticos a BP.D.B y añade 11 pruebas con unittest, todas satisfactorias. Contraste adicional de solo lectura. Sin nuevas dependencias, cambios de configuración ni regeneración de resultados. |
 | 003 | 2026-10-29 | 1.2 | Actualiza versión, índice de actividad a K=10 y comparación exclusiva con S. Amplía la suite a 14 pruebas satisfactorias y realiza contraste de solo lectura. Mantiene BP.D.B, formatos y dependencias; sin regenerar ni sobrescribir resultados existentes. |
+| 004 | 2026-10-29 | 1.3 | Extracción puntual con biblioteca estándar, SQLite en memoria y lectura XML en streaming del XLSX existente. Entrega CSV verificado de 59 filas y 18 columnas; SHA-256 de archivos protegidos sin cambios y 14 pruebas existentes satisfactorias. Sin cambios técnicos en el consolidador, dependencias ni configuración. |
+| 005 | 2026-10-29 | 1.4 | Integra el CSV de no coincidentes en el cruce del consolidador; amplía el esquema SQLite temporal para preservar contexto de ejecución y finding, y añade prueba sintética. Sin cambios de configuración ni dependencias; no se ejecuta consolidación real ni se regeneran resultados. |
+| 006 | 2026-10-29 | 1.5 | Añade índice de expresión SQLite para acelerar el anti-join de la exportación de agentes sin inventario y prueba de su creación. Sin cambios funcionales, configuración ni dependencias. Pruebas automatizadas; no se ejecuta consolidación real ni se modifican resultados existentes. |
+| 007 | 2026-10-29 | 1.6 | Configura logging de biblioteca estándar en el log de ejecución, con etapas, contadores, duraciones y trazas de excepciones. Sin cambios funcionales, de configuración ni dependencias. No se ejecuta consolidación real ni se modifican resultados existentes. |

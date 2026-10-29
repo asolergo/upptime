@@ -1,10 +1,10 @@
 # VulGest — Documento funcional
 
-- Versión documental: 1.2
-- Iteración: 003
+- Versión documental: 1.6
+- Iteración: 007
 - Fecha: 2026-10-29
-- Código de referencia: `consolidar_inventario.py`, versión `2026.10.29.26-activa-columna-11-s`.
-- Base de esta versión: revisión del código, pruebas del cruce y contraste de solo lectura; no se ha ejecutado la consolidación completa.
+- Código de referencia: `consolidar_inventario.py`, versión `2026.10.29.29-logging-detallado`.
+- Base de esta versión: registro detallado de etapas, estadísticas, duración y errores; no se ha ejecutado la consolidación completa.
 
 ## 1. Objetivo y alcance
 
@@ -82,6 +82,20 @@ Fechas de corte de la configuración inspeccionada:
 - Sin coincidencia: `Ejecución_agente=NO` y los otros dos campos vacíos.
 - Este cruce no depende de que `perimetro_agente` sea `SI`.
 
+#### Extracción puntual de ejecuciones sin inventario (iteración 004)
+
+- Se entrega `ejecuciones_agente_sin_inventario_20261029.csv`, con una fila por `finding_id` de ejecuciones admitidas que no aparece en el campo `id` del Excel existente. No se compara con `finding_uuid` ni se reconstruye el inventario desde sus CSV.
+- Se conserva la última ejecución admisible por finding, manteniendo la primera en caso de empate, igual que el cruce habitual. El detalle incluye agente, repositorio, acción, resolución, fecha, contexto del finding y referencia al registro de origen.
+- El contador `ejecuciones_completed_del_finding` indica cuántos registros de ejecución admisibles contienen ese finding; varias apariciones en un mismo registro cuentan una sola vez.
+- Se verifican 3.765 findings únicos, 3.706 coincidencias únicas y 59 sin coincidencia. En este Excel también son 3.706 filas coincidentes; no debe suponerse en general que filas del inventario y findings únicos son la misma magnitud.
+- Es una entrega puntual, no una salida automática del consolidador. Sin cambios funcionales en las reglas de consolidación o enriquecimiento existentes; únicamente se añade el detalle solicitado, sin modificar inventario ni fuentes.
+
+#### Generación automática de detalle (iteración 005)
+
+- En cada consolidación, durante el cruce de ejecuciones de agente contra el inventario SQLite ya consolidado, el script genera un CSV con los findings únicos sin coincidencia por `id`.
+- Se escriben un detalle fechado y una copia `ULTIMO` en `logs/`. La salida incluye datos de la ejecución y el objeto JSON completo del finding; se conserva el registro más reciente por `finding_id`, con la misma regla de desempate que el cruce.
+- El cambio previo fue una extracción puntual del Excel existente. Desde esta iteración la generación queda integrada en el flujo, pero no se ha ejecutado una consolidación real para producir los nuevos logs ni modificar el Excel.
+
 ### RF-05. Partner
 
 Se busca `endpoint__product__main_provider` en el mapeo de partners, sin distinguir mayúsculas y eliminando espacios exteriores. Si no existe agrupación, se conserva el proveedor original. Si el proveedor está vacío, `partner` queda vacío.
@@ -112,8 +126,10 @@ En IDE00838 sin cabecera se forma exclusivamente la clave `Application - <BP>.<D
 - Se admiten como máximo 1.048.575 filas de datos, además de la cabecera.
 - Se comprueba espacio libre antes de crear la base temporal y se genera primero un Excel temporal, que se comprueba antes de reemplazar el definitivo.
 - Se comprueban también las cabeceras derivadas y el alcance de la tabla del Excel definitivo.
-- Se generan un informe `<nombre_salida>_validacion.txt`, un log de ejecución y logs de resumen y detalle del cruce IDE00838 en `logs/`, con copias `ULTIMO`/`ULTIMA` según el archivo.
+- Se generan un informe `<nombre_salida>_validacion.txt`, un log detallado de ejecución y logs de resumen y detalle de los cruces IDE00838 y de ejecuciones de agente en `logs/`, con copias `ULTIMO`/`ULTIMA` según el archivo. El log de ejecución incorpora eventos fechados para selección y procesamiento de fuentes, cruces, exportación, validación, duración y errores con traceback; no registra filas completas del inventario.
 - La consola informa registros leídos, descartados, inserciones/actualizaciones, coincidencias y duración.
+- El cruce de agente genera también el CSV de findings sin inventario, con delimitador `;` y UTF-8 con BOM para facilitar su apertura en Excel. Su formato se describe en `docs/tecnico.md`.
+- El cruce de agente no coincidentes usa un índice temporal SQLite sobre el `id` del inventario convertido a texto; no cambia los resultados ni las reglas funcionales.
 - Si falta una fuente obligatoria, la configuración es inválida o no se puede escribir la salida, la ejecución informa un error. No se garantiza que todo fallo deje intactas todas las salidas: algunos controles son posteriores al reemplazo y los logs se escriben durante el proceso.
 
 ## 5. Reglas de trabajo de OpenCode
@@ -125,9 +141,9 @@ En IDE00838 sin cabecera se forma exclusivamente la clave `Application - <BP>.<D
 
 ## 6. Estado de validación
 
-La iteración 003 verifica la actividad de la columna 11 y la aceptación exclusiva de `S` con 14 pruebas automatizadas satisfactorias. Se incluyen valores contradictorios en las columnas 10 y 11 y la comprobación de `APLICACION_BAJA` desde la carga del catálogo. Se mantienen la composición BP.D.B y la regla de salida: encontrada activa implica `NO`; encontrada inactiva, no encontrada o nombre vacío implican `SI`.
+La iteración 005 añade una prueba sintética del flujo de ejecución: verifica la exclusión de IDs presentes, selección de la ejecución más reciente, campos de detalle y CSV `ULTIMO`. La iteración 006 añade comprobación del índice empleado por esa exportación. La iteración 004 generó puntualmente 59 filas contra el Excel existente, pero esa evidencia no certifica la generación automática sobre una consolidación completa. Se ejecutan las pruebas automatizadas descritas en el documento técnico; no se ejecuta `main()` ni se regenera el Excel.
 
-El contraste adicional de solo lectura usa el catálogo actual y el detalle de una ejecución anterior; no certifica los inventarios actuales ni el Excel existente. `Inventario_validacion.txt` declara ahora `2026.10.29.25-clave-unica-bp-d-b`, anterior al código corregido; no valida la corrección de actividad. OpenCode no ha ejecutado una consolidación completa ni regenerado o validado el Excel en esta iteración. Se preservan los resultados preexistentes, incluidos los cambios locales del usuario. Las comprobaciones técnicas se detallan en el documento técnico.
+No se ejecuta `main()`: la salida integrada y su escritura en `logs/` quedan verificadas con datos sintéticos, no con una consolidación real. El CSV puntual creado en la iteración 004 permanece como artefacto de esa iteración y no es producido por las pruebas actuales. No se modifica el Excel existente ni las fuentes. Las comprobaciones técnicas se detallan en el documento técnico.
 
 ## 7. Historial
 
@@ -136,3 +152,7 @@ El contraste adicional de solo lectura usa el catálogo actual y el detalle de u
 | 001 | 2026-10-29 | 1.0 | Primera versión funcional basada en código y configuración. Se establecen las restricciones de Python y la entrega documental por iteración. Sin cambios en las reglas de negocio implementadas ni ejecución del consolidador. |
 | 002 | 2026-10-29 | 1.1 | Incorpora el análisis previo y cambia la clave del cruce IDE00838 a BP.D.B por petición del usuario; con cabecera, Plataforma.Tipo.Nombre. Se mantienen actividad, duplicados y APLICACION_BAJA. Pruebas satisfactorias y contraste de solo lectura; sin regenerar salidas. |
 | 003 | 2026-10-29 | 1.2 | Corrige la actividad del formato sin cabecera de la columna 10 a la 11 y acepta únicamente S como activa, según la regla confirmada por el usuario. Mantiene BP.D.B y la regla de APLICACION_BAJA. 14 pruebas satisfactorias y contraste de solo lectura; sin regenerar resultados existentes. |
+| 004 | 2026-10-29 | 1.3 | Entrega puntual de CSV con 59 findings de ejecuciones completed sin coincidencia en el Excel existente, conservando la última ejecución y su detalle. Sin cambios funcionales en las reglas existentes. Verificación del cruce, del CSV y 14 pruebas satisfactorias; sin modificar inventario ni fuentes. |
+| 005 | 2026-10-29 | 1.4 | Integra en el consolidador la generación automática del CSV fechado y copia ULTIMO para findings de agente sin coincidencia por id, manteniendo la última ejecución y añadiendo detalles del agente/finding. Pruebas sintéticas satisfactorias; no se ejecuta la consolidación real ni se altera el Excel. |
+| 006 | 2026-10-29 | 1.5 | Corrige el cuello de botella potencial del CSV de agentes sin inventario mediante índice SQLite sobre `CAST(id AS TEXT)`. Sin cambios funcionales: se mantienen el contenido y las reglas del cruce. Pruebas automatizadas ejecutadas; no se ejecuta consolidación real ni se altera el Excel. |
+| 007 | 2026-10-29 | 1.6 | Añade logs detallados fechados de etapas, contadores, duraciones y errores. Sin cambios funcionales en las reglas de consolidación. Verificaciones automatizadas y estáticas; no se ejecuta consolidación real ni se altera el Excel. |
