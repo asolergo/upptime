@@ -1,0 +1,5 @@
+# Excluir todos los archivos .csv
+*.csv
+
+# Excluir todos los archivos .log
+*.log

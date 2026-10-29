@@ -1,0 +1,18 @@
+{
+  "input_folder": "C:\\dev\\VulGest\\datos",
+  "output_file": "C:\\dev\\VulGest\\Inventario.xlsx",
+  "prefixes": [
+    "open_allrisks_cr5",
+    "open_allrisks_cr6_10",
+    "closed_allrisks"
+  ],
+  "sheet_name": "inventario",
+  "table_name": "tbl_inventario",
+  "keep_database": false,
+  "fw_agents": {
+    "absis3-srv": "14/09/2026",
+    "absis3-ca": "26/10/2026",
+    "cloud": "01/10/2026",
+    "batch": "01/10/2026"
+  }
+}
