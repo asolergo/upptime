@@ -134,7 +134,7 @@ class Ide00838Tests(unittest.TestCase):
                     "endpoint__product__name": self.key,
                 }
                 values, _ = inventory.prepare_row(row, {}, {}, applications)
-                self.assertEqual(values[-1], expected)
+                self.assertEqual(values[-5], expected)
 
     def test_loaded_column_11_drives_baja(self):
         for value, name, expected in (
@@ -151,7 +151,7 @@ class Ide00838Tests(unittest.TestCase):
                     "endpoint__product__name": name,
                 }
                 values, _ = inventory.prepare_row(row, {}, {}, applications)
-                self.assertEqual(values[-1], expected)
+                self.assertEqual(values[-5], expected)
 
     def test_diagnostics_describe_new_composition(self):
         applications, _, _ = self.load([self.record()])

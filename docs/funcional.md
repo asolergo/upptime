@@ -1,10 +1,10 @@
 # VulGest — Documento funcional
 
-- Versión documental: 1.6
-- Iteración: 007
-- Fecha: 2026-10-29
-- Código de referencia: `consolidar_inventario.py`, versión `2026.10.29.29-logging-detallado`.
-- Base de esta versión: registro detallado de etapas, estadísticas, duración y errores; no se ha ejecutado la consolidación completa.
+- Versión documental: 1.7
+- Iteración: 008
+- Fecha: 2026-11-01
+- Código de referencia: `consolidar_inventario.py`, versión `2026.11.01.31-sla-en-plazo`.
+- Base de esta versión: ajuste del estado SLA para vulnerabilidades abiertas aún no vencidas; no se ha ejecutado la consolidación completa.
 
 ## 1. Objetivo y alcance
 
@@ -121,7 +121,7 @@ En IDE00838 sin cabecera se forma exclusivamente la clave `Application - <BP>.<D
 
 ## 4. Salidas y controles
 
-- `Inventario.xlsx`, según la configuración actual: hoja `inventario`, tabla `tbl_inventario`, 34 columnas de A a AH, cabecera inmovilizada y filtros.
+- `Inventario.xlsx`, según la configuración actual: hoja `inventario`, tabla `tbl_inventario`, 38 columnas de A a AL, cabecera inmovilizada y filtros.
 - Las fechas reconocidas son fechas Excel con presentación `DD/MM/YYYY`; el valor conserva la hora cuando existe. El riesgo es numérico con formato General. `found_by`, `cwe` y `finding_uuid` se fuerzan a texto.
 - Se admiten como máximo 1.048.575 filas de datos, además de la cabecera.
 - Se comprueba espacio libre antes de crear la base temporal y se genera primero un Excel temporal, que se comprueba antes de reemplazar el definitivo.
@@ -131,6 +131,14 @@ En IDE00838 sin cabecera se forma exclusivamente la clave `Application - <BP>.<D
 - El cruce de agente genera también el CSV de findings sin inventario, con delimitador `;` y UTF-8 con BOM para facilitar su apertura en Excel. Su formato se describe en `docs/tecnico.md`.
 - El cruce de agente no coincidentes usa un índice temporal SQLite sobre el `id` del inventario convertido a texto; no cambia los resultados ni las reglas funcionales.
 - Si falta una fuente obligatoria, la configuración es inválida o no se puede escribir la salida, la ejecución informa un error. No se garantiza que todo fallo deje intactas todas las salidas: algunos controles son posteriores al reemplazo y los logs se escriben durante el proceso.
+
+### SLA por vulnerabilidad
+
+- El Excel añade `Cumple_SLA`, `Mes_inicio_incumplimiento`, `Mes_fin_incumplimiento` y `Mes_cumplimiento`.
+- Riesgo `custom_risk` 8, 9 o 10: plazo de 30 días naturales desde `date_active`. Cualquier otro valor, incluso vacío o no interpretable, usa 90 días.
+- Un cierre en o antes de `date_active + plazo` cumple (`SI`) y se imputa en el mes de cierre. Una vulnerabilidad abierta que aún no ha vencido figura como `En plazo`, no como cumplida, y no tiene mes de cumplimiento.
+- Si la fecha de cierre excede el plazo, el estado es `NO`: el incumplimiento se imputa desde el primer día posterior al vencimiento, agrupado por mes natural, hasta el mes de cierre. Si sigue abierta, el fin es `31/12/9999`.
+- Los campos de mes se almacenan como fecha Excel correspondiente al primer día del mes; el valor terminal se conserva como `31/12/9999`. Si `date_active` está vacía o no es válida, `Cumple_SLA=N/A` y los tres meses quedan vacíos porque no se puede calcular el plazo.
 
 ## 5. Reglas de trabajo de OpenCode
 
@@ -156,3 +164,5 @@ No se ejecuta `main()`: la salida integrada y su escritura en `logs/` quedan ver
 | 005 | 2026-10-29 | 1.4 | Integra en el consolidador la generación automática del CSV fechado y copia ULTIMO para findings de agente sin coincidencia por id, manteniendo la última ejecución y añadiendo detalles del agente/finding. Pruebas sintéticas satisfactorias; no se ejecuta la consolidación real ni se altera el Excel. |
 | 006 | 2026-10-29 | 1.5 | Corrige el cuello de botella potencial del CSV de agentes sin inventario mediante índice SQLite sobre `CAST(id AS TEXT)`. Sin cambios funcionales: se mantienen el contenido y las reglas del cruce. Pruebas automatizadas ejecutadas; no se ejecuta consolidación real ni se altera el Excel. |
 | 007 | 2026-10-29 | 1.6 | Añade logs detallados fechados de etapas, contadores, duraciones y errores. Sin cambios funcionales en las reglas de consolidación. Verificaciones automatizadas y estáticas; no se ejecuta consolidación real ni se altera el Excel. |
+| 008 | 2026-11-01 | 1.7 | Añade cuatro columnas de SLA: estado SI/NO/N/A y meses de inicio/fin del incumplimiento o mes de cumplimiento, con plazos de 30/90 días y fin centinela para abiertos vencidos. Actualiza el esquema a 38 columnas A:AL. Pruebas sintéticas; no se ejecuta consolidación real ni se modifica el Excel existente. |
+| 009 | 2026-11-01 | 1.8 | Ajusta el estado de vulnerabilidades abiertas que aún no vencieron: `En plazo` en lugar de `SI`; `SI` queda reservado a vulnerabilidades cerradas dentro del SLA. Se actualiza la prueba correspondiente. Sin otros cambios funcionales ni regeneración del inventario. |

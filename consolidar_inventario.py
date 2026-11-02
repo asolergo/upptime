@@ -17,7 +17,7 @@ import sys
 import time
 import zipfile
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterator, TextIO
 
@@ -25,7 +25,7 @@ import tempfile
 from xml.sax.saxutils import escape, quoteattr
 
 
-SCRIPT_VERSION = "2026.10.29.29-logging-detallado"
+SCRIPT_VERSION = "2026.11.01.31-sla-en-plazo"
 CONFIG_FILENAME = "inventario_config.json"
 PARTNERS_CONFIG_FILENAME = "partners_config.json"
 DATABASE_FILENAME = "inventario_consolidacion.sqlite"
@@ -56,11 +56,13 @@ SOURCE_FIELDS = [
     "endpoint__product__grupo", "endpoint__product__servicio",
     "endpoint__product__main_provider", "data_from",
 ]
-OUTPUT_FIELDS = SOURCE_FIELDS + ["framework", "perimetro_agente", "Ejecución_agente", "resultado_agente", "fecha_ult_ejecucion_agente", "partner", "APLICACION_BAJA"]
+SLA_FIELDS = ["Cumple_SLA", "Mes_inicio_incumplimiento", "Mes_fin_incumplimiento", "Mes_cumplimiento"]
+OUTPUT_FIELDS = SOURCE_FIELDS + ["framework", "perimetro_agente", "Ejecución_agente", "resultado_agente", "fecha_ult_ejecucion_agente", "partner", "APLICACION_BAJA"] + SLA_FIELDS
 DATE_FIELDS = {
     "last_detection", "date", "planned_resolution_date", "last_reviewed", "created",
     "modified", "date_deadline", "date_paused", "date_closed", "date_active", "data_from",
     "fecha_ult_ejecucion_agente",
+    "Mes_inicio_incumplimiento", "Mes_fin_incumplimiento", "Mes_cumplimiento",
 }
 TEXT_FIELDS = {"found_by", "cwe", "finding_uuid"}
 UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.IGNORECASE)
@@ -273,6 +275,34 @@ def parse_decimal(value: Any) -> float | None:
         return None
 
 
+def calculate_sla(custom_risk: Any, date_active_value: Any, date_closed_value: Any) -> tuple[str, str, str, str]:
+    """Devuelve estado SLA y meses de incumplimiento/cumplimiento."""
+    date_active = parse_datetime(date_active_value)
+    if date_active is None:
+        return "N/A", "", "", ""
+
+    risk = parse_decimal(custom_risk)
+    sla_days = 30 if risk is not None and risk in {8, 9, 10} else 90
+    deadline = date_active + timedelta(days=sla_days)
+    date_closed = parse_datetime(date_closed_value)
+    raw_closed = "" if date_closed_value is None else str(date_closed_value).strip()
+    closed = date_closed is not None and bool(raw_closed)
+    if closed and date_closed <= deadline:
+        return "SI", "", "", datetime(date_closed.year, date_closed.month, 1).isoformat()
+
+    comparison_date = date_closed if closed else datetime.now()
+    if comparison_date <= deadline:
+        return "En plazo", "", "", ""
+
+    breach_start = (deadline.date() + timedelta(days=1))
+    start_month = datetime(breach_start.year, breach_start.month, 1).isoformat()
+    end_month = (
+        datetime(date_closed.year, date_closed.month, 1).isoformat()
+        if closed else "9999-12-31T00:00:00"
+    )
+    return "NO", start_month, end_month, ""
+
+
 def parse_integer_when_possible(value: Any) -> int | str:
     text = "" if value is None else str(value).strip()
     if not text:
@@ -350,6 +380,7 @@ def prepare_row(row: dict[str, Any], fw_agents: dict[str, str], partners: dict[s
     # Regla: no encontrado = SI; encontrado activo = NO; encontrado no activo = SI.
     aplicacion_baja = "NO" if ide_active is True else "SI"
     values.append(aplicacion_baja)
+    values.extend(calculate_sla(row.get("custom_risk"), row.get("date_active"), row.get("date_closed")))
     return values, sort_key
 
 
@@ -810,13 +841,14 @@ def cell_xml(reference: str, field: str, value: Any, header: bool = False) -> st
 
 def write_worksheet_xml(connection: sqlite3.Connection, xml_path: Path, unique_count: int) -> int:
     last_row = unique_count + 1
-    widths = {1: 55, 7: 38, 22: 45, 23: 28, 24: 28, 25: 28, 26: 30, 27: 24, 28: 18, 29: 18, 30: 18, 31: 24, 32: 26, 33: 24, 34: 20}
+    widths = {1: 55, 7: 38, 22: 45, 23: 28, 24: 28, 25: 28, 26: 30, 27: 24, 28: 18, 29: 18, 30: 18, 31: 24, 32: 26, 33: 24, 34: 20, 35: 16, 36: 26, 37: 26, 38: 22}
     quoted_columns = ", ".join(quote_identifier(field) for field in OUTPUT_FIELDS)
     cursor = connection.execute(f"SELECT {quoted_columns} FROM inventario ORDER BY rowid")
     with xml_path.open("w", encoding="utf-8", newline="") as handle:
         handle.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>')
         handle.write('<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">')
-        handle.write(f'<dimension ref="A1:AH{last_row}"/>')
+        last_column = excel_column_letter(len(OUTPUT_FIELDS))
+        handle.write(f'<dimension ref="A1:{last_column}{last_row}"/>')
         handle.write('<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/><selection pane="bottomLeft" activeCell="A2" sqref="A2"/></sheetView></sheetViews>')
         handle.write('<sheetFormatPr defaultRowHeight="15"/><cols>')
         for index in range(1, len(OUTPUT_FIELDS) + 1):
@@ -832,7 +864,7 @@ def write_worksheet_xml(connection: sqlite3.Connection, xml_path: Path, unique_c
             written += 1
             if written % PROGRESS_EVERY == 0:
                 print(f"    Excel: {written:,} registros escritos")
-        handle.write(f'</sheetData><autoFilter ref="A1:AH{last_row}"/><tableParts count="1"><tablePart r:id="rId1"/></tableParts></worksheet>')
+        handle.write(f'</sheetData><autoFilter ref="A1:{last_column}{last_row}"/><tableParts count="1"><tablePart r:id="rId1"/></tableParts></worksheet>')
     return written
 
 
@@ -843,7 +875,8 @@ def styles_xml() -> str:
 
 def table_xml(table_name: str, last_row: int) -> str:
     columns = "".join(f'<tableColumn id="{i}" name={quoteattr(field)}/>' for i, field in enumerate(OUTPUT_FIELDS, 1))
-    return f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" id="1" name={quoteattr(table_name)} displayName={quoteattr(table_name)} ref="A1:AH{last_row}" totalsRowShown="0"><autoFilter ref="A1:AH{last_row}"/><tableColumns count="34">{columns}</tableColumns><tableStyleInfo name="TableStyleMedium2" showFirstColumn="0" showLastColumn="0" showRowStripes="1" showColumnStripes="0"/></table>'''
+    last_column = excel_column_letter(len(OUTPUT_FIELDS))
+    return f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" id="1" name={quoteattr(table_name)} displayName={quoteattr(table_name)} ref="A1:{last_column}{last_row}" totalsRowShown="0"><autoFilter ref="A1:{last_column}{last_row}"/><tableColumns count="{len(OUTPUT_FIELDS)}">{columns}</tableColumns><tableStyleInfo name="TableStyleMedium2" showFirstColumn="0" showLastColumn="0" showRowStripes="1" showColumnStripes="0"/></table>'''
 
 
 def validate_excel_names(sheet_name: str, table_name: str) -> None:
@@ -895,6 +928,7 @@ def write_excel(connection: sqlite3.Connection, output_path: Path, sheet_name: s
                 "fecha_ult_ejecucion_agente",
                 "partner",
                 "APLICACION_BAJA",
+                *SLA_FIELDS,
             )
             missing_headers = [header for header in required_headers if header not in worksheet_xml]
             if missing_headers:
@@ -902,9 +936,10 @@ def write_excel(connection: sqlite3.Connection, output_path: Path, sheet_name: s
                     "Validación interna fallida: faltan cabeceras en el XLSX temporal: "
                     + ", ".join(missing_headers)
                 )
-            if f'ref="A1:AH{written + 1}"' not in table_definition:
+            last_column = excel_column_letter(len(OUTPUT_FIELDS))
+            if f'ref="A1:{last_column}{written + 1}"' not in table_definition:
                 raise ConsolidationError(
-                    "Validación interna fallida: la tabla Excel no incluye la columna AH."
+                    "Validación interna fallida: el rango de la tabla Excel no coincide con sus columnas."
                 )
         os.replace(temporary, output_path)
         return written
@@ -1016,15 +1051,17 @@ def verify_final_excel(output_path: Path) -> None:
         "fecha_ult_ejecucion_agente",
         "partner",
         "APLICACION_BAJA",
+        *SLA_FIELDS,
     )
     missing = [header for header in required_headers if header not in worksheet_xml]
     if missing:
         raise ConsolidationError(
             "El Excel definitivo no contiene estas cabeceras: " + ", ".join(missing)
         )
-    if 'ref="A1:AH' not in table_xml_content or '<tableColumns count="34">' not in table_xml_content:
+    last_column = excel_column_letter(len(OUTPUT_FIELDS))
+    if f'ref="A1:{last_column}' not in table_xml_content or f'<tableColumns count="{len(OUTPUT_FIELDS)}">' not in table_xml_content:
         raise ConsolidationError(
-            "El Excel definitivo no tiene la tabla extendida hasta AH con 34 columnas."
+            "El Excel definitivo no tiene el rango esperado o el número esperado de columnas."
         )
 
 
@@ -1209,9 +1246,9 @@ def main() -> int:
                 f"OUTPUT_FILE={output_path}",
                 f"OUTPUT_SIZE={final_stat.st_size}",
                 f"COLUMN_COUNT={len(OUTPUT_FIELDS)}",
-                f"LAST_COLUMN=AH",
+                f"LAST_COLUMN={excel_column_letter(len(OUTPUT_FIELDS))}",
                 f"LAST_HEADER={OUTPUT_FIELDS[-1]}",
-                "TABLE_RANGE=A:AH",
+                f"TABLE_RANGE=A:{excel_column_letter(len(OUTPUT_FIELDS))}",
                 "APLICACION_BAJA=OK",
             ]) + "\n",
             encoding="utf-8",
@@ -1236,7 +1273,7 @@ def main() -> int:
         print("  Columnas de agente generadas: Ejecución_agente, resultado_agente, fecha_ult_ejecucion_agente")
         print("  Columna de partner generada: partner (columna AG)")
         print("  Columna de baja generada: APLICACION_BAJA (columna AH)")
-        print("  Verificación final: 34 columnas; tabla A:AH; cabeceras partner y APLICACION_BAJA presentes")
+        print(f"  Verificación final: {len(OUTPUT_FIELDS)} columnas; tabla A:{excel_column_letter(len(OUTPUT_FIELDS))}; cabeceras SLA presentes")
         print(f"  Tamaño del fichero final: {final_stat.st_size:,} bytes")
         print(f"  Ruta final: {output_path}")
         print(f"  Informe de validación: {validation_path}")

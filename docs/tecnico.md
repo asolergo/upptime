@@ -1,9 +1,9 @@
 # VulGest — Documento técnico
 
-- Versión documental: 1.6
-- Iteración: 007
-- Fecha: 2026-10-29
-- Código de referencia: `consolidar_inventario.py`, `SCRIPT_VERSION=2026.10.29.29-logging-detallado`.
+- Versión documental: 1.7
+- Iteración: 008
+- Fecha: 2026-11-01
+- Código de referencia: `consolidar_inventario.py`, `SCRIPT_VERSION=2026.11.01.31-sla-en-plazo`.
 
 ## 1. Arquitectura y componentes
 
@@ -91,7 +91,7 @@ endpoint__product__grupo, endpoint__product__servicio,
 endpoint__product__main_provider, data_from
 ```
 
-Se añaden siete columnas:
+Se añaden once columnas:
 
 | Columna Excel | Campo |
 | --- | --- |
@@ -102,8 +102,19 @@ Se añaden siete columnas:
 | AF | `fecha_ult_ejecucion_agente` |
 | AG | `partner` |
 | AH | `APLICACION_BAJA` |
+| AI | `Cumple_SLA` |
+| AJ | `Mes_inicio_incumplimiento` |
+| AK | `Mes_fin_incumplimiento` |
+| AL | `Mes_cumplimiento` |
 
 Las reglas de estos campos están descritas en `docs/funcional.md`.
+
+### Cálculo de SLA
+
+- `calculate_sla()` devuelve cuatro campos por vulnerabilidad: estado, mes de inicio de incumplimiento, mes de fin de incumplimiento y mes de cumplimiento.
+- Usa 30 días naturales para riesgos numéricos exactamente 8, 9 o 10; 90 días para los demás valores. El vencimiento es `date_active + plazo`; cierre igual al vencimiento cumple. Una fecha de cierre no interpretable se trata como registro todavía abierto.
+- Para vencidos, el inicio de imputación es el mes natural del día siguiente al vencimiento. El fin es el mes del cierre válido o `9999-12-31` si sigue abierto. Los meses se persisten en SQLite en formato ISO como primer día del mes y se exportan como fechas Excel.
+- Sin fecha de activación válida el estado es `N/A` y los meses quedan vacíos. Un registro abierto dentro del plazo se marca `En plazo`, sin mes de cumplimiento; `SI` solo representa un cierre dentro del plazo.
 
 ### Cruce IDE00838
 
@@ -118,7 +129,7 @@ Las reglas de estos campos están descritas en `docs/funcional.md`.
 
 - Archivo: `inventario_consolidacion.sqlite` junto al Excel de salida. Si existe, `create_database()` lo elimina antes de crear la nueva base; no se reutiliza como histórico.
 - PRAGMA: `journal_mode=WAL`, `synchronous=NORMAL`.
-- Tabla `inventario`: 34 campos de salida más `_sort_key TEXT NOT NULL`; `finding_uuid TEXT PRIMARY KEY` y `custom_risk REAL`; los demás campos no tienen tipo declarado.
+- Tabla `inventario`: 38 campos de salida más `_sort_key TEXT NOT NULL`; `finding_uuid TEXT PRIMARY KEY` y `custom_risk REAL`; los demás campos no tienen tipo declarado.
 - UPSERT: actualiza todos los campos salvo el UUID únicamente si `excluded._sort_key > inventario._sort_key`.
 - Tabla `agent_executions`: `finding_id TEXT PRIMARY KEY`, `resolution TEXT`, `execution_timestamp TEXT NOT NULL`, `detail_json TEXT NOT NULL`; conserva el contexto de la ejecución y el objeto finding del registro más reciente. Actualiza todos los campos asociados solo con timestamp estrictamente posterior.
 - Las fechas válidas se almacenan con `isoformat(timespec="microseconds")`; las comparaciones se realizan sobre estas cadenas normalizadas.
@@ -129,7 +140,7 @@ Las reglas de estos campos están descritas en `docs/funcional.md`.
 - Paquete ZIP con partes Open XML de libro, hoja, estilos, tabla, relaciones y propiedades; sin dependencia de una biblioteca externa de Excel.
 - Se escribe la hoja mediante cursor SQLite `ORDER BY rowid` en un XML temporal junto a la salida.
 - Se utiliza texto `inlineStr`, escape XML y limpieza de caracteres de control; las fechas se convierten a serie Excel tomando como base 1899-12-30.
-- El rango de tabla y de hoja llega a AH; algunas definiciones incluyen literalmente `34` y `AH`. Un cambio de columnas exige revisar estos puntos y sus validaciones.
+- El rango de tabla y de hoja llega dinámicamente hasta la última columna (AL con las 38 columnas actuales); la definición y validaciones derivan el rango del esquema.
 - El XLSX temporal se denomina `<nombre>.tmp.xlsx`; se verifica la integridad ZIP, las cabeceras derivadas exigidas y el rango de tabla antes de reemplazar el destino.
 - La validación final comprueba cabeceras y definición de tabla. No es una certificación completa del esquema Open XML ni una apertura real en Excel.
 
@@ -149,7 +160,7 @@ Las reglas de estos campos están descritas en `docs/funcional.md`.
 - El logger estándar escribe eventos con fecha/hora y nivel en `ejecucion_inventario_ULTIMA.log`: fuentes seleccionadas, estadísticas y duración de procesamiento por etapa, rutas diagnósticas, resultados de cruces, generación y validación XLSX, limpieza y errores (incluido traceback para excepciones). Se inicia una nueva versión `ULTIMA` por ejecución; no se mantienen logs fechados de ejecución.
 - Los errores se presentan también en consola. Si el fallo ocurre antes de configurar el logger (por ejemplo, al cargar configuración o crear logs), solo puede quedar disponible el mensaje de consola y el log de inicio podría no existir o estar incompleto.
 - El resumen IDE00838 y los CSV de detalle de ambos cruces contienen datos del proyecto: tratar los logs como datos internos, no como documentación pública.
-- El informe de validación registra versión, ruta, tamaño, 34 columnas, AH y cabecera final. No contiene una auditoría completa de los valores de todas las celdas.
+- El informe de validación registra versión, ruta, tamaño, cantidad dinámica de columnas, última columna y cabecera final. No contiene una auditoría completa de los valores de todas las celdas.
 - La lectura de inventarios y ejecuciones es en streaming, pero IDE00838 se carga completo y ciertas validaciones leen el XML de la hoja completo en memoria.
 - La estimación de disco no incluye todos los auxiliares, logs y necesidades reales de SQLite; es una comprobación preventiva, no una garantía de capacidad.
 - Se espera que `details` sea un objeto JSON; un JSON válido de otro tipo puede provocar un error inesperado al acceder a `.get()`. No se ha modificado este comportamiento.
@@ -213,6 +224,12 @@ Estas son instrucciones persistentes de comportamiento del agente, no un bloqueo
 - La prueba sintética verifica la creación del índice y conserva la comprobación de contenido del CSV, exclusión por ID, detalle y selección de la ejecución más reciente.
 - Se ejecutan las pruebas automatizadas de biblioteca estándar y comprobaciones estáticas. No se ejecuta `main()` ni se modifica el Excel, logs o fuentes existentes.
 
+### Verificación de la iteración 008: SLA mensual
+
+- Se añadieron pruebas unitarias para plazos de 30 y 90 días, cierre en el vencimiento, incumplimiento cerrado y abierto, vulnerabilidad abierta en plazo y fecha de activación inválida.
+- Se ejecuta la suite completa con `python -I -S -B -m unittest discover -s tests -v`, comprobaciones de sintaxis y `git diff --check`.
+- No se ejecuta `main()` ni se genera o modifica el Excel de inventario; las pruebas del cálculo usan únicamente datos sintéticos.
+
 ## 9. Historial
 
 | Iteración | Fecha | Versión | Cambios e impacto |
@@ -224,3 +241,5 @@ Estas son instrucciones persistentes de comportamiento del agente, no un bloqueo
 | 005 | 2026-10-29 | 1.4 | Integra el CSV de no coincidentes en el cruce del consolidador; amplía el esquema SQLite temporal para preservar contexto de ejecución y finding, y añade prueba sintética. Sin cambios de configuración ni dependencias; no se ejecuta consolidación real ni se regeneran resultados. |
 | 006 | 2026-10-29 | 1.5 | Añade índice de expresión SQLite para acelerar el anti-join de la exportación de agentes sin inventario y prueba de su creación. Sin cambios funcionales, configuración ni dependencias. Pruebas automatizadas; no se ejecuta consolidación real ni se modifican resultados existentes. |
 | 007 | 2026-10-29 | 1.6 | Configura logging de biblioteca estándar en el log de ejecución, con etapas, contadores, duraciones y trazas de excepciones. Sin cambios funcionales, de configuración ni dependencias. No se ejecuta consolidación real ni se modifican resultados existentes. |
+| 008 | 2026-11-01 | 1.7 | Añade cálculo SLA por registro y cuatro columnas de salida; amplía esquema y rangos XLSX de 34/AH a 38/AL y hace dinámica la validación de columnas. Incorpora pruebas sintéticas. Sin dependencias ni cambios de configuración; no ejecuta consolidación real. |
+| 009 | 2026-11-01 | 1.8 | Cambia el estado de registros abiertos aún dentro del plazo a `En plazo`; reserva `SI` para cierres oportunos. Actualiza prueba unitaria y descripción técnica. Sin cambios de esquema ni dependencias; no ejecuta consolidación real. |
