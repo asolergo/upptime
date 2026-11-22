@@ -4,16 +4,16 @@
     "url": "https://www.google.com",
     "icon": "https://icons.duckduckgo.com/ip3/www.google.com.ico",
     "slug": "google",
-    "status": "up",
+    "status": "down",
     "uptime": "99.98%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
+    "uptimeDay": "99.96%",
+    "uptimeWeek": "99.99%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.91%",
     "time": 126,
-    "timeDay": 56,
-    "timeWeek": 79,
-    "timeMonth": 108,
+    "timeDay": 143,
+    "timeWeek": 98,
+    "timeMonth": 112,
     "timeYear": 129,
     "dailyMinutesDown": {
       "2025-12-12": 20,
@@ -22,7 +22,8 @@
       "2026-04-10": 54,
       "2026-05-09": 53,
       "2026-06-02": 226,
-      "2026-07-27": 68
+      "2026-07-27": 68,
+      "2026-11-22": 1
     }
   },
   {
@@ -67,7 +68,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "18.43%",
+    "uptime": "18.42%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -78,7 +79,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-11-22": 355,
+      "2026-11-22": 1004,
       "2026-11-21": 1440,
       "2026-11-20": 1440,
       "2026-11-19": 1440,
@@ -480,7 +481,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-11-22": 355,
+      "2026-11-22": 1004,
       "2026-11-21": 1440,
       "2026-11-20": 1440,
       "2026-11-19": 1440,
