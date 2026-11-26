@@ -11,8 +11,8 @@
     "uptimeMonth": "99.26%",
     "uptimeYear": "99.85%",
     "time": 126,
-    "timeDay": 58,
-    "timeWeek": 100,
+    "timeDay": 96,
+    "timeWeek": 101,
     "timeMonth": 112,
     "timeYear": 119,
     "dailyMinutesDown": {
@@ -38,9 +38,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 204,
-    "timeDay": 30,
-    "timeWeek": 130,
-    "timeMonth": 332,
+    "timeDay": 97,
+    "timeWeek": 103,
+    "timeMonth": 316,
     "timeYear": 207,
     "dailyMinutesDown": {}
   },
@@ -56,10 +56,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 278,
-    "timeDay": 304,
-    "timeWeek": 181,
-    "timeMonth": 238,
-    "timeYear": 269,
+    "timeDay": 345,
+    "timeWeek": 222,
+    "timeMonth": 240,
+    "timeYear": 270,
     "dailyMinutesDown": {}
   },
   {
@@ -68,7 +68,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/oficinaempresas.bankia.es.ico",
     "slug": "bankia-online-empresas",
     "status": "down",
-    "uptime": "18.40%",
+    "uptime": "18.39%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -79,7 +79,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-11-25": 467,
+      "2026-11-26": 459,
+      "2026-11-25": 1440,
       "2026-11-24": 1440,
       "2026-11-23": 1440,
       "2026-11-22": 1440,
@@ -442,8 +443,7 @@
       "2025-11-30": 1440,
       "2025-11-29": 1440,
       "2025-11-28": 1440,
-      "2025-11-27": 1440,
-      "2025-11-26": 1440
+      "2025-11-27": 1440
     }
   },
   {
@@ -458,7 +458,7 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 42,
-    "timeDay": 18,
+    "timeDay": 40,
     "timeWeek": 41,
     "timeMonth": 46,
     "timeYear": 49,
@@ -481,7 +481,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-11-25": 468,
+      "2026-11-26": 459,
+      "2026-11-25": 1440,
       "2026-11-24": 1440,
       "2026-11-23": 1440,
       "2026-11-22": 1440,
@@ -844,8 +845,7 @@
       "2025-11-30": 1440,
       "2025-11-29": 1440,
       "2025-11-28": 1440,
-      "2025-11-27": 1440,
-      "2025-11-26": 1440
+      "2025-11-27": 1440
     }
   }
 ]
